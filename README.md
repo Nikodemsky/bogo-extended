@@ -6,7 +6,7 @@ To **nie jest fork**. Bogo zostaje nietknięte i aktualizuje się normalnie z Wo
 
 | | |
 |---|---|
-| Wersja | 1.3.0 |
+| Wersja | 1.4.1 |
 | Wymaga | WordPress 6.7+, PHP 7.4+, Bogo 3.9+ |
 | Opcjonalnie | Contact Form 7 6.x, ACF / ACF PRO 6.x, The SEO Framework |
 | Licencja | GPL v2 lub nowsza |
