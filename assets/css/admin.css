@@ -1,0 +1,345 @@
+/* Bogo Extended – admin */
+
+.column-bogoext_translations {
+	width: 12em;
+}
+
+.bogoext-badges {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+}
+
+.bogoext-badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 2.4em;
+	height: 1.9em;
+	padding: 0 .45em;
+	box-sizing: border-box;
+	border: 1px solid #2271b1;
+	border-radius: 3px;
+	font: 600 11px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	letter-spacing: .02em;
+	text-decoration: none;
+	color: #2271b1;
+	background: #fff;
+	cursor: default;
+}
+
+a.bogoext-badge,
+button.bogoext-badge {
+	cursor: pointer;
+}
+
+.bogoext-badge.is-publish {
+	color: #fff;
+	background: #2271b1;
+}
+
+.bogoext-badge.is-draft {
+	color: #2271b1;
+	background: #f0f6fc;
+}
+
+.bogoext-badge.is-missing {
+	border-style: dashed;
+	border-color: #8c8f94;
+	color: #646970;
+	background: transparent;
+}
+
+.bogoext-badge.is-missing.is-disabled {
+	opacity: .45;
+}
+
+.bogoext-badge.is-current {
+	box-shadow: 0 0 0 2px #fff, 0 0 0 3px #1d2327;
+}
+
+a.bogoext-badge:hover,
+a.bogoext-badge:focus,
+button.bogoext-badge:hover,
+button.bogoext-badge:focus {
+	border-color: #135e96;
+	color: #135e96;
+	background: #f6f7f7;
+	outline: none;
+	box-shadow: 0 0 0 1px #135e96;
+}
+
+a.bogoext-badge.is-publish:hover,
+a.bogoext-badge.is-publish:focus {
+	color: #fff;
+	background: #135e96;
+}
+
+.bogoext-badge.is-busy {
+	opacity: .6;
+	cursor: progress;
+	animation: bogoext-pulse 1s ease-in-out infinite;
+}
+
+.bogoext-badge.is-error {
+	border-color: #d63638;
+	color: #d63638;
+}
+
+.bogoext-badge.is-new {
+	box-shadow: 0 0 0 2px #00a32a;
+}
+
+@keyframes bogoext-pulse {
+	50% { opacity: .3; }
+}
+
+/* Translation fields (menus, terms) */
+
+.bogoext-i18n {
+	margin: 8px 0;
+}
+
+.bogoext-i18n > summary {
+	cursor: pointer;
+	font-weight: 600;
+	margin-bottom: 6px;
+}
+
+.bogoext-i18n__row {
+	display: grid;
+	grid-template-columns: 3.2em 1fr;
+	gap: 6px 8px;
+	align-items: start;
+	margin-bottom: 8px;
+}
+
+.bogoext-i18n__row .bogoext-badge {
+	margin-top: 4px;
+}
+
+.bogoext-i18n__fields {
+	display: grid;
+	gap: 4px;
+}
+
+.bogoext-i18n__fields input,
+.bogoext-i18n__fields textarea {
+	width: 100%;
+}
+
+.menu-item-settings .bogoext-i18n {
+	clear: both;
+	padding-top: 4px;
+}
+
+.form-table .bogoext-i18n__row {
+	max-width: 46em;
+}
+
+/* Settings page */
+
+.bogoext-settings .form-table th {
+	width: 16em;
+}
+
+.bogoext-settings .description code {
+	font-size: 12px;
+}
+
+.bogoext-module-off {
+	color: #8c8f94;
+}
+
+/* Contact Form 7 */
+
+.bogoext-cf7-box {
+	padding: 6px 10px 10px;
+	border-top: 1px solid #f0f0f1;
+}
+
+.bogoext-cf7-box label {
+	display: block;
+	font-weight: 600;
+	margin: 6px 0 2px;
+}
+
+.bogoext-cf7-box select {
+	width: 100%;
+}
+
+.bogoext-cf7-box .bogoext-badges {
+	margin-top: 4px;
+}
+
+/* Block editor sidebar */
+
+.bogoext-editor-list {
+	margin: 0;
+}
+
+.bogoext-editor-row {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 4px 10px;
+	align-items: start;
+	padding: 10px 0;
+	margin: 0;
+	border-bottom: 1px solid #f0f0f1;
+}
+
+.bogoext-editor-row:last-child {
+	border-bottom: 0;
+}
+
+.bogoext-editor-row__text {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	min-width: 0;
+}
+
+.bogoext-editor-row__text span {
+	color: #757575;
+	font-size: 12px;
+	overflow-wrap: anywhere;
+}
+
+.bogoext-editor-row__actions {
+	grid-column: 2;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+
+.bogoext-editor-row__actions:empty {
+	display: none;
+}
+
+/* Translated URL bases */
+
+.bogoext-slugs-table td {
+	vertical-align: middle;
+}
+
+.bogoext-slugs-table input.regular-text {
+	width: 12em;
+}
+
+.bogoext-slug-prefix {
+	color: #646970;
+	font-family: Consolas, Monaco, monospace;
+	font-size: 12px;
+}
+
+.bogoext-post-types {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(18em, 1fr));
+	gap: 6px 16px;
+	margin: 8px 0 12px;
+}
+
+/* Strings translation */
+
+.bogoext-strings-rescan {
+	display: inline;
+}
+
+.bogoext-strings-filters {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin: 12px 0 4px;
+}
+
+.bogoext-strings-filters .search-box {
+	margin-left: auto;
+}
+
+.bogoext-strings-table .column-source {
+	width: 45%;
+}
+
+.bogoext-st-original {
+	font-size: 14px;
+	line-height: 1.5;
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
+}
+
+.bogoext-st-original.is-plural {
+	margin-top: 4px;
+	color: #50575e;
+}
+
+.bogoext-st-label {
+	color: #646970;
+	font-size: 12px;
+}
+
+.bogoext-st-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px 10px;
+	margin-top: 6px;
+	color: #646970;
+	font-size: 12px;
+}
+
+.bogoext-st-context {
+	padding: 0 6px;
+	border-radius: 3px;
+	background: #f0f0f1;
+}
+
+.bogoext-st-comment {
+	font-style: italic;
+}
+
+.bogoext-st-refs {
+	font-family: Consolas, Monaco, monospace;
+	cursor: help;
+}
+
+.bogoext-strings-table textarea {
+	width: 100%;
+	min-height: 2.4em;
+	resize: vertical;
+}
+
+.bogoext-st-form {
+	display: grid;
+	grid-template-columns: 5em 1fr;
+	gap: 6px;
+	align-items: start;
+	margin-bottom: 4px;
+}
+
+.bogoext-st-form span {
+	padding-top: 6px;
+	color: #646970;
+	font-size: 12px;
+}
+
+.bogoext-st-hint {
+	margin: 4px 0 0;
+	color: #646970;
+	font-size: 12px;
+}
+
+.bogoext-i18n__slug {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 6px;
+	align-items: center;
+}
+
+.bogoext-i18n__slug span {
+	color: #646970;
+	font-size: 12px;
+}
+
+.bogoext-i18n__slug input {
+	font-family: Consolas, Monaco, monospace;
+}

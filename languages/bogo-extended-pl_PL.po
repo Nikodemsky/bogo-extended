@@ -1,0 +1,547 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Bogo Extended 1.4.1\n"
+"Language: pl_PL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Domain: bogo-extended\n"
+
+#, php-format
+msgid "\"%1$s\" (%2$s) is a reserved word."
+msgstr "„%1$s” (%2$s) to słowo zarezerwowane."
+
+#, php-format
+msgid "\"%1$s\" (%2$s) is already the address of a page in this language."
+msgstr "„%1$s” (%2$s) to już adres strony w tym języku."
+
+#, php-format
+msgid ""
+"\"%1$s\" (%2$s) is used twice – every base must be unique within a language."
+msgstr ""
+"„%1$s” (%2$s) występuje dwa razy – każda baza musi być unikalna w obrębie "
+"języka."
+
+msgid "\"Originals only\" list view"
+msgstr "Widok „Tylko oryginały” na listach"
+
+#, php-format
+msgid ""
+"%1$d strings found in %2$d files of %3$s (scanned %4$s). Translations are "
+"saved as standard gettext files (.po, .mo, .l10n.php) in wp-"
+"content/languages/bogo-extended/ and loaded by WordPress before the theme's "
+"own translations."
+msgstr ""
+"Znaleziono %1$d fraz w %2$d plikach motywu %3$s (skan: %4$s). Tłumaczenia są"
+" zapisywane jako standardowe pliki gettext (.po, .mo, .l10n.php) w wp-"
+"content/languages/bogo-extended/ i ładowane przez WordPressa przed "
+"tłumaczeniami samego motywu."
+
+#, php-format
+msgid "%1$s – %2$s"
+msgstr "%1$s – %2$s"
+
+msgid "A draft copy will open in a new tab."
+msgstr "Kopia robocza otworzy się w nowej karcie."
+
+msgid "ACF integration"
+msgstr "Integracja z ACF"
+
+#, php-format
+msgid "Add %s translation"
+msgstr "Dodaj tłumaczenie: %s"
+
+msgid "Add-on modules for Bogo. Each one can be switched off independently."
+msgstr "Moduły rozszerzające Bogo. Każdy można wyłączyć niezależnie."
+
+msgid "All"
+msgstr "Wszystkie"
+
+msgid "All languages"
+msgstr "Wszystkie języki"
+
+msgid "Automatic link localization"
+msgstr "Automatyczna lokalizacja linków"
+
+msgid "Bogo Extended"
+msgstr "Bogo Extended"
+
+msgid ""
+"Bogo Extended requires the Bogo plugin (by Rock Lobster Inc.) to be "
+"installed and active."
+msgstr ""
+"Bogo Extended wymaga zainstalowanej i włączonej wtyczki Bogo (Rock Lobster "
+"Inc.)."
+
+msgid "Contact Form 7 translations"
+msgstr "Tłumaczenia Contact Form 7"
+
+msgid "Content"
+msgstr "Treść"
+
+msgid "Could not create the translation."
+msgstr "Nie udało się utworzyć tłumaczenia."
+
+msgid "Could not write the .mo file."
+msgstr "Nie udało się zapisać pliku .mo."
+
+msgid "Create"
+msgstr "Utwórz"
+
+#, php-format
+msgid "Create %s translation (copy of this form)"
+msgstr "Utwórz tłumaczenie: %s (kopia tego formularza)"
+
+msgid "Creating translation…"
+msgstr "Tworzenie tłumaczenia…"
+
+msgid "Creating…"
+msgstr "Tworzenie…"
+
+msgid ""
+"Custom post type and taxonomy bases per language, e.g. /de/projekte/… "
+"instead of /de/realizacje/…, with 301 redirects from the old addresses. Set "
+"them in the table below."
+msgstr ""
+"Bazy adresów własnych typów treści i taksonomii dla każdego języka, np. "
+"/de/projekte/… zamiast /de/realizacje/…, z przekierowaniem 301 ze starych "
+"adresów. Ustawiasz je w tabeli poniżej."
+
+#, php-format
+msgid "Description (%s)"
+msgstr "Opis (%s)"
+
+msgid "Description (optional)"
+msgstr "Opis (opcjonalnie)"
+
+msgid "Draft created – click to edit"
+msgstr "Utworzono szkic – kliknij, aby edytować"
+
+msgid "Dropdown switcher shortcode"
+msgstr "Shortcode przełącznika (dropdown)"
+
+msgid "Edit"
+msgstr "Edytuj"
+
+msgid "Editor translations sidebar"
+msgstr "Panel tłumaczeń w edytorze"
+
+msgid "Enabled"
+msgstr "Włączone"
+
+msgid ""
+"Enables [bogo-dropdown] (styles: popup, toggle, list; options: compact, flags)."
+msgstr "Włącza [bogo-dropdown] (style: popup, toggle, list; opcje: compact, flags)."
+
+#, php-format
+msgid "Form %d"
+msgstr "Forma %d"
+
+msgid "Form language"
+msgstr "Język formularza"
+
+msgid "Form not found."
+msgstr "Nie znaleziono formularza."
+
+msgid "Hide the toolbar language menu"
+msgstr "Ukryj menu języka w pasku admina"
+
+msgid "Invalid request."
+msgstr "Nieprawidłowe żądanie."
+
+msgid ""
+"Keeps backslashes in block attributes and meta (Bogo strips them) and skips "
+"editor lock / old slug meta when copying."
+msgstr ""
+"Zachowuje ukośniki wsteczne w atrybutach bloków i polach meta (Bogo je "
+"usuwa) oraz nie kopiuje blokady edycji / starych slugów."
+
+msgid "Language"
+msgstr "Język"
+
+msgid ""
+"Language badges in post/page lists – click a dashed badge to create a "
+"translation, a filled one to edit it."
+msgstr ""
+"Plakietki języków na listach wpisów i stron – przerywana: utwórz "
+"tłumaczenie, wypełniona: edytuj."
+
+#, php-format
+msgid "Language: %s"
+msgstr "Język: %s"
+
+msgid "Languages"
+msgstr "Języki"
+
+msgid ""
+"Languages → Strings Translation: translate texts written in the theme code "
+"(buttons, labels, footer…). Saved as standard .po/.mo/.l10n.php files that "
+"WordPress loads natively."
+msgstr ""
+"Języki → Tłumaczenie fraz: tłumaczenie tekstów zapisanych w kodzie motywu "
+"(przyciski, etykiety, stopka…). Zapis do standardowych plików "
+".po/.mo/.l10n.php, które WordPress ładuje natywnie."
+
+msgid ""
+"Leave a field empty to keep the original base. Use lowercase words; slashes "
+"are allowed (e.g. \"offer/projects\"). Old addresses redirect (301) to the "
+"new ones automatically."
+msgstr ""
+"Puste pole = oryginalna baza. Używaj małych liter; ukośniki są dozwolone "
+"(np. „oferta/projekty”). Stare adresy przekierowują (301) na nowe "
+"automatycznie."
+
+msgid "Leave empty to use the original (or Bogo's \"Terms Translation\")."
+msgstr ""
+"Puste pole = oryginał (lub tłumaczenie z ekranu „Tłumaczenie terminów” w "
+"Bogo)."
+
+msgid "Loading translations…"
+msgstr "Wczytywanie tłumaczeń…"
+
+msgid "Menu translations"
+msgstr "Tłumaczenia menu"
+
+msgid "Modules"
+msgstr "Moduły"
+
+#, php-format
+msgid "Name (%s)"
+msgstr "Nazwa (%s)"
+
+#, php-format
+msgid "Navigation label (%s)"
+msgstr "Etykieta nawigacji (%s)"
+
+#, php-format
+msgid "No %s translation"
+msgstr "Brak tłumaczenia: %s"
+
+msgid "No custom post types registered."
+msgstr "Brak zarejestrowanych własnych typów treści."
+
+msgid "No strings found."
+msgstr "Nie znaleziono fraz."
+
+msgid "No translation"
+msgstr "Brak tłumaczenia"
+
+msgid ""
+"Nothing to translate: there are no translatable custom post types or "
+"taxonomies with their own URL base, or only one language is active."
+msgstr ""
+"Nie ma czego tłumaczyć: brak tłumaczonych typów treści lub taksonomii z "
+"własną bazą adresu albo aktywny jest tylko jeden język."
+
+msgid ""
+"On translated pages, links to default-language posts point to their "
+"translation. The link picker shows only originals."
+msgstr ""
+"Na przetłumaczonych stronach linki do treści w języku domyślnym prowadzą do "
+"ich tłumaczeń. Wybór linku pokazuje tylko oryginały."
+
+msgid ""
+"One form per language linked into a group; the shortcode shows the form in "
+"the visitor's language."
+msgstr ""
+"Osobny formularz dla każdego języka, połączone w grupę; shortcode pokazuje "
+"formularz w języku odwiedzającego."
+
+msgid ""
+"Only published translations in hreflang, adds x-default, none on 404/search "
+"pages."
+msgstr ""
+"Tylko opublikowane tłumaczenia w hreflang, dodaje x-default, brak na "
+"stronach 404 i wyszukiwania."
+
+msgid "Original"
+msgstr "Oryginał"
+
+msgid "Originals only"
+msgstr "Tylko oryginały"
+
+msgid ""
+"Per-language labels, descriptions and custom-link URLs; menu items follow "
+"the translated post automatically. Also localizes block-theme navigation "
+"links."
+msgstr ""
+"Etykiety, opisy i adresy własnych linków dla każdego języka; pozycje menu "
+"same prowadzą do tłumaczenia wpisu. Lokalizuje też linki nawigacji w "
+"motywach blokowych."
+
+msgid ""
+"Per-language name and description fields on the term edit screen of the "
+"taxonomies selected below."
+msgstr ""
+"Pola nazwy i opisu dla każdego języka na ekranie edycji terminu w wybranych "
+"niżej taksonomiach."
+
+msgid ""
+"Pinnable \"Translations\" panel in the block editor header: status of every "
+"language, edit, preview and create links."
+msgstr ""
+"Przypinany panel „Tłumaczenia” w nagłówku edytora blokowego: status każdego "
+"języka, edycja, podgląd i tworzenie."
+
+msgid ""
+"Placeholder = current translation from the theme or language pack. Leave "
+"empty to keep it."
+msgstr ""
+"Podpowiedź w polu = obecne tłumaczenie z motywu lub paczki językowej. Zostaw"
+" puste, aby je zachować."
+
+msgid "Plural:"
+msgstr "L. mnoga:"
+
+msgid ""
+"Post lists show default-language posts by default (plus posts that exist "
+"only in another language). Use \"All languages\" or Bogo's language filter "
+"to see everything."
+msgstr ""
+"Listy wpisów domyślnie pokazują treści w języku domyślnym (oraz te, które "
+"istnieją tylko w innym języku). „Wszystkie języki” lub filtr Bogo pokazuje "
+"wszystko."
+
+msgid ""
+"Post object, relationship, page link and link fields return translated "
+"content."
+msgstr ""
+"Pola Post Object, Relationship, Page Link i Link zwracają przetłumaczone "
+"treści."
+
+msgid ""
+"Posts and pages are always translatable. Tick custom post types that should "
+"get translations (language column, \"Add translation\", editor panel, "
+"language prefix in URLs)."
+msgstr ""
+"Wpisy i strony są tłumaczone zawsze. Zaznacz własne typy treści, które mają "
+"dostać tłumaczenia (kolumna języków, „Dodaj tłumaczenie”, panel w edytorze, "
+"prefiks języka w adresach)."
+
+msgid "Preview"
+msgstr "Podgląd"
+
+msgid ""
+"Removes Bogo's language menu next to \"Howdy\" in the admin toolbar. It only"
+" changes the language of the admin interface for you, not the site language."
+" The admin language can still be set in Users → Profile."
+msgstr ""
+"Usuwa menu języka Bogo obok „Witaj” w pasku administracyjnym. Ono zmienia "
+"tylko język panelu dla Ciebie, a nie język witryny. Język panelu nadal "
+"ustawisz w Użytkownicy → Profil."
+
+msgid "Rescan theme"
+msgstr "Skanuj motyw ponownie"
+
+msgid "Safe \"Add translation\""
+msgstr "Bezpieczne „Dodaj tłumaczenie”"
+
+msgid "Save URL bases"
+msgstr "Zapisz bazy adresów"
+
+msgid "Save the post first to add translations."
+msgstr "Najpierw zapisz wpis, aby dodać tłumaczenia."
+
+msgid "Save translations"
+msgstr "Zapisz tłumaczenia"
+
+msgid "Search strings"
+msgstr "Szukaj fraz"
+
+msgid "Show"
+msgstr "Pokaż"
+
+msgid "Strings Translation"
+msgstr "Tłumaczenie fraz"
+
+msgid "Strings per page"
+msgstr "Fraz na stronę"
+
+msgid "Strings translation"
+msgstr "Tłumaczenie fraz"
+
+msgid "Sync terms to translations"
+msgstr "Synchronizuj kategorie/tagi do tłumaczeń"
+
+msgid ""
+"Synced patterns (reusable blocks) can be translated; the translation is "
+"rendered automatically."
+msgstr ""
+"Wzorce synchronizowane (bloki wielokrotnego użytku) można tłumaczyć; "
+"tłumaczenie wyświetla się automatycznie."
+
+msgid "Term translations"
+msgstr "Tłumaczenia terminów"
+
+msgid "Text domain"
+msgstr "Domena tekstowa"
+
+msgid ""
+"The \"Translated URL bases\" module is switched off – the values below are "
+"stored but not used."
+msgstr ""
+"Moduł „Tłumaczone bazy adresów” jest wyłączony – poniższe wartości są "
+"zapisane, ale nieużywane."
+
+msgid "The SEO Framework: translated front page"
+msgstr "The SEO Framework: przetłumaczona strona główna"
+
+#, php-format
+msgid ""
+"The folder %s is not writable. Translations were saved in the database, but "
+"the files could not be created."
+msgstr ""
+"Folder %s nie jest zapisywalny. Tłumaczenia zapisano w bazie danych, ale nie"
+" udało się utworzyć plików."
+
+msgid "The theme was scanned again."
+msgstr "Motyw został przeskanowany ponownie."
+
+msgid "The theme was scanned for translatable strings."
+msgstr "Motyw został przeskanowany w poszukiwaniu fraz do tłumaczenia."
+
+msgid "This content type is not translatable."
+msgstr "Ten typ treści nie jest tłumaczony."
+
+msgid "This post"
+msgstr "Ten wpis"
+
+msgid "Translatable content types"
+msgstr "Tłumaczone typy treści"
+
+msgid "Translatable synced patterns"
+msgstr "Tłumaczone wzorce synchronizowane"
+
+msgid "Translatable taxonomies"
+msgstr "Tłumaczone taksonomie"
+
+msgid "Translated"
+msgstr "Przetłumaczone"
+
+msgid "Translated URL bases"
+msgstr "Tłumaczone bazy adresów"
+
+msgid "Translation of"
+msgstr "Tłumaczenie formularza"
+
+#, php-format
+msgid "Translation – %s"
+msgstr "Tłumaczenie – %s"
+
+msgid "Translations"
+msgstr "Tłumaczenia"
+
+msgid "Translations column"
+msgstr "Kolumna tłumaczeń"
+
+msgid "Translations saved. The translation files have been updated."
+msgstr "Tłumaczenia zapisane. Pliki tłumaczeń zostały zaktualizowane."
+
+#, php-format
+msgid "URL (%s)"
+msgstr "URL (%s)"
+
+msgid "URL (empty = automatic)"
+msgstr "URL (puste = automatycznie)"
+
+msgid "Untranslated"
+msgstr "Nieprzetłumaczone"
+
+msgid ""
+"Use the shortcode of any form in the group – the version in the visitor's "
+"language is shown automatically."
+msgstr ""
+"Użyj shortcode dowolnego formularza z grupy – wersja w języku odwiedzającego"
+" wyświetli się automatycznie."
+
+msgid ""
+"Uses the translated page's own SEO title/description on the translated "
+"static front page."
+msgstr ""
+"Na przetłumaczonej statycznej stronie głównej używa tytułu/opisu SEO z "
+"przetłumaczonej strony."
+
+msgid "View"
+msgstr "Zobacz"
+
+msgid ""
+"When categories/tags of a default-language post change, apply the same terms"
+" to its translations."
+msgstr ""
+"Gdy zmienią się kategorie/tagi wpisu w języku domyślnym, te same terminy "
+"trafią do jego tłumaczeń."
+
+msgid "You are not allowed to do this."
+msgstr "Nie masz uprawnień do tej operacji."
+
+msgid "You cannot add this language."
+msgstr "Nie możesz dodać tego języka."
+
+msgid "archive"
+msgstr "archiwum"
+
+msgid "classic editor – translations via the Language box"
+msgstr "klasyczny edytor – tłumaczenia w polu „Language”"
+
+#, php-format
+msgid "context: %s"
+msgstr "kontekst: %s"
+
+msgid "enabled in code"
+msgstr "włączone w kodzie"
+
+msgid "hreflang fixes"
+msgstr "Poprawki hreflang"
+
+msgid "post type"
+msgstr "typ treści"
+
+msgid "taxonomy"
+msgstr "taksonomia"
+
+msgid "the required plugin is not active, the module stays idle"
+msgstr "wymagana wtyczka nie jest aktywna, moduł pozostaje bezczynny"
+
+msgid "— none (this is an original form) —"
+msgstr "— brak (to jest formularz oryginalny) —"
+
+#, php-format
+msgid ""
+"%d translation was not saved: it uses more placeholders (%%s, %%d…) than the"
+" original, which would cause a PHP error."
+msgid_plural ""
+"%d translations were not saved: they use more placeholders (%%s, %%d…) than "
+"the original, which would cause a PHP error."
+msgstr[0] ""
+"%d tłumaczenie nie zostało zapisane: używa więcej symboli zastępczych (%%s, "
+"%%d…) niż oryginał, co spowodowałoby błąd PHP."
+msgstr[1] ""
+"%d tłumaczenia nie zostały zapisane: używają więcej symboli zastępczych "
+"(%%s, %%d…) niż oryginał, co spowodowałoby błąd PHP."
+msgstr[2] ""
+"%d tłumaczeń nie zostało zapisanych: używają więcej symboli zastępczych "
+"(%%s, %%d…) niż oryginał, co spowodowałoby błąd PHP."
+
+#, php-format
+msgid "Keep the placeholder (%%s, %%d, %%1$s…) – at most %d."
+msgid_plural "Keep the placeholders (%%s, %%d, %%1$s…) – at most %d."
+msgstr[0] "Zachowaj symbol zastępczy (%%s, %%d, %%1$s…) – najwyżej %d."
+msgstr[1] "Zachowaj symbole zastępcze (%%s, %%d, %%1$s…) – najwyżej %d."
+msgstr[2] "Zachowaj symbole zastępcze (%%s, %%d, %%1$s…) – najwyżej %d."
+
+#: includes/modules/taxonomy.php
+msgid "Slug"
+msgstr "Slug"
+
+#: includes/modules/taxonomy.php
+msgid "Slug (%s)"
+msgstr "Slug (%s)"
+
+#: includes/modules/taxonomy.php
+msgid ""
+"Slug \"%1$s\" (%2$s) was not saved – it is already used by \"%3$s\" in this "
+"language."
+msgstr ""
+"Slug „%1$s” (%2$s) nie został zapisany – w tym języku używa go już „%3$s”."
