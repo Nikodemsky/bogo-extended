@@ -343,3 +343,13 @@ a.bogoext-badge.is-publish:focus {
 .bogoext-i18n__slug input {
 	font-family: Consolas, Monaco, monospace;
 }
+
+/* ACF options pages: language tabs */
+.bogoext-acf-opt { padding-top: 0; }
+.bogoext-acf-opt__tabs { display: flex; flex-wrap: wrap; gap: 4px; margin: 10px 0 4px; }
+.bogoext-acf-opt .bogoext-acf-opt__tab { padding: 4px 12px; border: 1px solid #c3c4c7; border-radius: 3px; text-decoration: none; background: #fff; color: #2271b1; }
+.bogoext-acf-opt .bogoext-acf-opt__tab:hover { border-color: #2271b1; }
+.bogoext-acf-opt .bogoext-acf-opt__tab.is-current { background: #2271b1; border-color: #2271b1; color: #fff; }
+.bogoext-acf-opt__tab.is-inherited { border-style: dashed; }
+.bogoext-acf-opt__tab.is-inherited.is-current { border-style: solid; }
+.bogoext-acf-opt .bogoext-acf-opt__reset { color: #b32d2e; }

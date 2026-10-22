@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Bogo Extended 1.4.1\n"
+"Project-Id-Version: Bogo Extended 1.6.0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -119,7 +119,8 @@ msgid "Enabled"
 msgstr ""
 
 msgid ""
-"Enables [bogo-dropdown] (styles: popup, toggle, list; options: compact, flags)."
+"Enables [bogo-dropdown] (styles: popup, toggle, list; options: compact, "
+"flags)."
 msgstr ""
 
 #, php-format
@@ -470,4 +471,94 @@ msgstr ""
 msgid ""
 "Slug \"%1$s\" (%2$s) was not saved – it is already used by \"%3$s\" in this "
 "language."
+msgstr ""
+
+#: includes/admin/settings-page.php
+msgid "ACF: own relations per language"
+msgstr ""
+
+#: includes/admin/settings-page.php
+msgid ""
+"Off: relationship / post object / page link pickers always list originals "
+"and the translations are shown automatically. On: on a translated post the "
+"pickers list posts in that post's language, so each language can have its "
+"own relations; \"Add translation\" maps copied selections to their published"
+" translations, and items from another language are marked (PL). Requires "
+"\"ACF integration\"."
+msgstr ""
+
+#. translators: %s: language name
+#: includes/modules/acf-options.php
+#, php-format
+msgid ""
+"%s has no values of its own yet – the form shows the default language "
+"values, and so does the site. Saving creates a separate copy for this "
+"language."
+msgstr ""
+
+#: includes/modules/acf-options.php
+msgid "ACF options pages translations"
+msgstr ""
+
+#: includes/modules/acf-options.php
+msgid ""
+"Delete all values of this language? The default language values will be used"
+" again."
+msgstr ""
+
+#: includes/modules/acf-options.php
+msgid "Delete this language's values"
+msgstr ""
+
+#: includes/modules/acf-options.php
+msgid "Language of the values"
+msgstr ""
+
+#: includes/modules/acf-options.php
+msgid ""
+"Options pages only (Bogo Extended): one value for every language, edited in "
+"the default language. Applies to top-level fields; sub fields follow their "
+"parent."
+msgstr ""
+
+#: includes/modules/acf-options.php
+msgid ""
+"Separate values of ACF PRO options pages for every language, with language "
+"tabs on the options page. A language without its own values uses the default"
+" language. Fields can be marked \"Shared by all languages\" in the field "
+"settings."
+msgstr ""
+
+#: includes/modules/acf-options.php
+msgid "Shared by all languages"
+msgstr ""
+
+#: includes/modules/acf-options.php
+msgid "Shared by all languages – edit this field in the default language."
+msgstr ""
+
+#: includes/modules/acf-options.php
+msgid "Sorry, you are not allowed to do that."
+msgstr ""
+
+#: includes/modules/acf-options.php
+msgid "The values of this language were deleted."
+msgstr ""
+
+#: includes/modules/acf-options.php
+msgid "Translated options pages"
+msgstr ""
+
+#. translators: %s: language name
+#: includes/modules/acf-options.php
+#, php-format
+msgid ""
+"You are editing the values for %s. Fields added later and fields shared by "
+"all languages use the default language."
+msgstr ""
+
+#: includes/modules/acf-options.php
+msgid ""
+"You are editing the values of the default language. Languages without their "
+"own values use them."
 msgstr ""

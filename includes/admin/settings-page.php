@@ -92,6 +92,16 @@ function bogoext_settings_modules() {
 			__( 'Post object, relationship, page link and link fields return translated content.', 'bogo-extended' ),
 			class_exists( 'ACF' ) || function_exists( 'acf' ),
 		),
+		'acf_own_relations' => array(
+			__( 'ACF: own relations per language', 'bogo-extended' ),
+			__( 'Off: relationship / post object / page link pickers always list originals and the translations are shown automatically. On: on a translated post the pickers list posts in that post\'s language, so each language can have its own relations; "Add translation" maps copied selections to their published translations, and items from another language are marked (PL). Requires "ACF integration".', 'bogo-extended' ),
+			class_exists( 'ACF' ) || function_exists( 'acf' ),
+		),
+		'acf_options'     => array(
+			__( 'ACF options pages translations', 'bogo-extended' ),
+			__( 'Separate values of ACF PRO options pages for every language, with language tabs on the options page. A language without its own values uses the default language. Fields can be marked "Shared by all languages" in the field settings.', 'bogo-extended' ),
+			function_exists( 'acf_get_options_pages' ),
+		),
 		'synced_patterns' => array(
 			__( 'Translatable synced patterns', 'bogo-extended' ),
 			__( 'Synced patterns (reusable blocks) can be translated; the translation is rendered automatically.', 'bogo-extended' ),
@@ -148,6 +158,17 @@ function bogoext_settings_sanitize( $input ) {
 		if ( 'post_types' === $key ) {
 			$list          = isset( $input[ $key ] ) ? (array) $input[ $key ] : array();
 			$clean[ $key ] = array_values( array_intersect( array_map( 'sanitize_key', $list ), array_keys( bogoext_selectable_post_types() ) ) );
+			continue;
+		}
+
+		if ( 'acf_options_excluded' === $key ) {
+			if ( empty( $input['acf_options_present'] ) || ! function_exists( 'bogoext_acf_opt_all_ids' ) ) {
+				$clean[ $key ] = (array) bogoext_get_setting( $key ); // List not on the form – keep it.
+				continue;
+			}
+
+			$checked       = isset( $input['acf_options_translated'] ) ? array_map( 'sanitize_text_field', (array) $input['acf_options_translated'] ) : array();
+			$clean[ $key ] = array_values( array_diff( array_keys( bogoext_acf_opt_all_ids() ), $checked ) );
 			continue;
 		}
 
@@ -209,6 +230,19 @@ function bogoext_settings_page() {
 										<label style="display:inline-block;margin-right:14px">
 											<input type="checkbox" name="bogoext_settings[taxonomy_list][]" value="<?php echo esc_attr( $taxonomy->name ); ?>" <?php checked( in_array( $taxonomy->name, (array) $settings['taxonomy_list'], true ) ); ?> />
 											<?php echo esc_html( $taxonomy->labels->name ); ?> <code><?php echo esc_html( $taxonomy->name ); ?></code>
+										</label>
+									<?php endforeach; ?>
+								</fieldset>
+							<?php endif; ?>
+
+							<?php if ( 'acf_options' === $key && function_exists( 'bogoext_acf_opt_all_ids' ) && bogoext_acf_opt_all_ids() ) : ?>
+								<fieldset style="margin-top:8px">
+									<legend class="screen-reader-text"><?php esc_html_e( 'Translated options pages', 'bogo-extended' ); ?></legend>
+									<input type="hidden" name="bogoext_settings[acf_options_present]" value="1" />
+									<?php foreach ( bogoext_acf_opt_all_ids() as $opt_id => $titles ) : ?>
+										<label style="display:inline-block;margin-right:14px">
+											<input type="checkbox" name="bogoext_settings[acf_options_translated][]" value="<?php echo esc_attr( $opt_id ); ?>" <?php checked( ! in_array( $opt_id, (array) $settings['acf_options_excluded'], true ) ); ?> />
+											<?php echo esc_html( implode( ', ', array_unique( $titles ) ) ); ?> <code><?php echo esc_html( $opt_id ); ?></code>
 										</label>
 									<?php endforeach; ?>
 								</fieldset>

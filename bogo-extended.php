@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Bogo Extended
  * Description:       Add-on for the Bogo multilingual plugin: translation flags in post lists, editor translations sidebar, menu, term, link, ACF, synced pattern, theme strings and Contact Form 7 translations. Works on top of the original Bogo – no fork.
- * Version:           1.4.1
+ * Version:           1.6.0
  * Requires at least: 6.7
  * Requires PHP:      7.4
  * Requires Plugins:  bogo
@@ -14,7 +14,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'BOGOEXT_VERSION', '1.4.1' );
+define( 'BOGOEXT_VERSION', '1.6.0' );
 define( 'BOGOEXT_FILE', __FILE__ );
 define( 'BOGOEXT_DIR', __DIR__ );
 define( 'BOGOEXT_URL', plugin_dir_url( __FILE__ ) );
@@ -56,6 +56,7 @@ function bogoext_bootstrap() {
 		'sync_terms'      => 'sync-terms.php',
 		'content_links'   => 'content-links.php',
 		'acf'             => 'acf.php',
+		'acf_options'     => 'acf-options.php',
 		'synced_patterns' => 'synced-patterns.php',
 		'switcher'        => 'switcher.php',
 		'slugs'           => 'slugs.php',

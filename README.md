@@ -6,7 +6,7 @@ To **nie jest fork**. Bogo zostaje nietknięte i aktualizuje się normalnie z Wo
 
 | | |
 |---|---|
-| Wersja | 1.4.1 |
+| Wersja | 1.6.0 |
 | Wymaga | WordPress 6.7+, PHP 7.4+, Bogo 3.9+ |
 | Opcjonalnie | Contact Form 7 6.x, ACF / ACF PRO 6.x, The SEO Framework |
 | Licencja | GPL v2 lub nowsza |
@@ -28,7 +28,7 @@ Od WordPressa 6.5 nagłówek `Requires Plugins: bogo` sprawia, że WordPress nie
 W **Języki → Bogo Extended**:
 
 1. **Tłumaczone typy treści.** Wpisy i strony są tłumaczone zawsze. Zaznacz własne typy treści (CPT), które mają dostać tłumaczenia.
-2. **Moduły.** Domyślnie włączone jest wszystko poza synchronizacją kategorii do tłumaczeń. Wyłącz to, czego nie potrzebujesz.
+2. **Moduły.** Domyślnie włączone jest wszystko poza synchronizacją kategorii do tłumaczeń, trybem ACF „własne powiązania w każdym języku” i tłumaczeniem stron opcji ACF. Wyłącz to, czego nie potrzebujesz.
 3. **Tłumaczone bazy adresów** (opcjonalnie). Wpisz bazy adresów typów treści i taksonomii w innych językach, np. `projekte` zamiast `realizacje`.
 
 ## Tłumaczone typy treści
@@ -170,6 +170,26 @@ Na stronach w języku pobocznym:
 | Link | URL zlokalizowany. Tytuł zamieniany na przetłumaczony tylko wtedy, gdy był równy tytułowi wpisu |
 
 W panelu selektory wpisów ACF pokazują tylko oryginały, bo tłumaczenie jest podstawiane automatycznie. Można to wyłączyć filtrem `bogoext_acf_hide_translations`.
+
+#### Własne powiązania w każdym języku (domyślnie wyłączone)
+
+Tryb domyślny zakłada, że powiązania są takie same we wszystkich językach (1:1 z oryginałem). Gdy jakiś język potrzebuje innych powiązań, włącz **Języki → Bogo Extended → ACF: własne powiązania w każdym języku**. Wtedy:
+
+- **Wybór w panelu.** Na przetłumaczonym wpisie (np. specjalizacji w języku angielskim) pola Relationship, Post Object i Page Link pokazują do wyboru wpisy w języku tego wpisu, czyli angielskie wersje wpisów, a nie oryginały. Dotyczy to też własnych typów treści. Wpisy typów, które nie są tłumaczone, widać zawsze.
+- **Wpis w języku domyślnym** działa bez zmian i pokazuje oryginały.
+- **„Dodaj tłumaczenie”** kopiuje powiązania z oryginału i od razu zamienia je na opublikowane tłumaczenia w nowym języku. Wpis bez opublikowanego tłumaczenia zostaje jako oryginał. Na stronie i tak wyświetli się jego tłumaczenie, gdy tylko zostanie opublikowane. Dotyczy to także pól w grupach, repeaterach i treści elastycznej.
+- **Oznaczenie języka.** Wybrany wpis z innego języka niż edytowany jest oznaczony kodem, np. `Kardiologia (PL)`, więc od razu widać, które powiązania pochodzą jeszcze z oryginału.
+- **Na stronie** wyświetlane jest dokładnie to, co wybrano w danym języku. Pozycje z języka domyślnego (np. dawne powiązania sprzed włączenia opcji) są nadal zamieniane na tłumaczenia.
+
+Pola na stronach opcji, terminach i profilach użytkowników nie mają języka, więc zawsze pokazują oryginały. Mapowanie przy tworzeniu tłumaczenia wyłączysz filtrem `bogoext_acf_remap_on_duplicate`.
+
+Tryb można też włączyć tylko dla wybranych pól, przy wyłączonej opcji globalnej. Pole rozpoznawaj po kluczu, bo nazwa pola zmienia się podczas wyświetlania formularza:
+
+```php
+add_filter( 'bogoext_acf_own_relations', function ( $enabled, $field ) {
+	return in_array( $field['key'] ?? '', array( 'field_65f0c1a2b3c4d' ), true ) ? true : $enabled;
+}, 10, 2 );
+```
 
 ### 10. Tłumaczone wzorce synchronizowane (reusable blocks)
 
@@ -320,6 +340,31 @@ wp-content/languages/bogo-extended/{domena}-{locale}.l10n.php   szybki format PH
 - Frazy budowane dynamicznie, np. `__( $zmienna )`, nie dają się wykryć statycznie.
 - Do tłumaczenia **treści** (wpisów, stron, menu) służą pozostałe moduły. Ten służy tylko do tekstów z kodu.
 
+### 18. Tłumaczone strony opcji ACF (ACF PRO, domyślnie wyłączone)
+
+Strony opcji ACF PRO (`acf_add_options_page()` i strony dodane w panelu ACF) mają jeden zestaw wartości dla całej witryny. Po włączeniu modułu **Języki → Bogo Extended → Tłumaczenia stron opcji ACF** każdy język może mieć własne wartości, np. inne hasło w nagłówku, inne linki w stopce albo inny tekst CTA.
+
+**W panelu** nad formularzem strony opcji pojawiają się zakładki języków. Zakładka języka domyślnego edytuje dotychczasowe wartości. Zakładka innego języka edytuje osobny zestaw wartości:
+
+| Stan zakładki | Wygląd | Znaczenie |
+|---|---|---|
+| język bez własnych wartości | ramka przerywana | formularz i strona pokazują wartości języka domyślnego |
+| język z własnymi wartościami | ramka ciągła | formularz i strona pokazują wartości tego języka |
+
+- **Pierwszy zapis** zakładki języka tworzy pełną kopię wartości tego języka. Formularz jest wtedy wypełniony wartościami języka domyślnego, więc zmieniasz tylko to, co ma być inne. Od tego momentu język jest niezależny, a zmiany w języku domyślnym już na niego nie wpływają.
+- **„Usuń wartości tego języka”** kasuje kopię. Język wraca do wartości języka domyślnego.
+- **Pola wspólne.** Pole, które ma być takie samo we wszystkich językach (telefon, e-mail, klucz API, logo), oznacz w ustawieniach pola w grupie pól jako **„Wspólne dla wszystkich języków”**. W zakładkach innych języków zamiast pola wyświetla się informacja, że edytuje się je w języku domyślnym, a na stronie zawsze jest wartość domyślna. Ustawienie dotyczy pól najwyższego poziomu. Pola wewnątrz grupy lub repeatera dziedziczą je od rodzica.
+- **Pola dodane później** do grupy pól, w języku, który ma już własne wartości, używają wartości języka domyślnego, dopóki nie zapiszesz tej zakładki.
+- Repeater, treść elastyczna i grupa są traktowane jako całość. Język ma albo własne wiersze, albo wiersze języka domyślnego, nigdy mieszankę.
+
+**Na stronie** nic nie trzeba zmieniać w motywie. `get_field( 'tagline', 'option' )`, `have_rows( 'links', 'option' )` itp. zwracają wartości języka strony. Działa to też dla stron opcji z własnym `post_id`, np. `get_field( 'maps_key', 'api_keys' )`.
+
+**Które strony.** W ustawieniach modułu jest lista identyfikatorów stron opcji (`options` i własne `post_id`). Odznaczona strona ma jeden zestaw wartości dla wszystkich języków i nie ma zakładek. Podstrony z tym samym `post_id` (zwykle `options`) dzielą ustawienie.
+
+Moduł współpracuje z pozostałymi funkcjami ACF: wpisy wybrane w polach Relationship i Post Object na stronie opcji są zamieniane na tłumaczenia. W trybie „własne powiązania w każdym języku” zakładka języka pokazuje do wyboru wpisy w tym języku.
+
+Wartości są zapisywane przez samo ACF, jako opcje z kodem języka: `options_de_DE_tagline` zamiast `options_tagline`. Strony opcji przechowujące wartości we wpisie (liczbowy `post_id`) nie są obsługiwane.
+
 ---
 
 ## Uprawnienia
@@ -333,6 +378,7 @@ wp-content/languages/bogo-extended/{domena}-{locale}.l10n.php   szybki format PH
 | Tłumaczenia CF7 | `wpcf7_edit_contact_form` + nonce |
 | Ustawienia | `manage_options` + nonce |
 | Tłumaczenie fraz | `manage_options` (filtr `bogoext_strings_capability`) + nonce |
+| Wartości stron opcji ACF | uprawnienie strony opcji (`capability`) oraz dostęp do języka w Bogo. Usuwanie wartości języka wymaga też nonce |
 
 Wszystkie dane z formularzy są sanityzowane, a wszystkie dane wyjściowe escapowane.
 
@@ -354,6 +400,8 @@ Wszystkie dane z formularzy są sanityzowane, a wszystkie dane wyjściowe escapo
 | `bogoext_st_tr_{locale}` | options (bez autoload) | tłumaczenia fraz danego języka |
 | `bogoext_st_compiled` | options | lista wygenerowanych plików (domena → języki) |
 | `wp-content/languages/bogo-extended/` | pliki | wygenerowane `.po`, `.mo`, `.l10n.php` |
+| `{post_id}_{locale}_{pole}` | options | wartości stron opcji ACF w danym języku, zapisywane przez ACF (np. `options_de_DE_tagline`) |
+| `bogoext_shared` | ustawienia pola ACF | pole wspólne dla wszystkich języków |
 
 Klucze z podkreślnikiem są ukryte w polach własnych. Odinstalowanie usuwa tylko ustawienia, a tłumaczenia (treść, frazy i ich pliki) zostają.
 
@@ -402,6 +450,9 @@ Funkcje Bogo, które warto znać: `bogo_get_post_translations()`, `bogo_get_post
 | `bogoext_duplicate_excluded_meta( $keys, $post, $locale )` | meta niekopiowane przy tworzeniu tłumaczenia |
 | `bogoext_hide_translations_in_link_picker( true )` | `false` = okno linku pokazuje też tłumaczenia |
 | `bogoext_acf_hide_translations( true, $field )` | `false` = selektory ACF pokazują też tłumaczenia |
+| `bogoext_acf_own_relations( $enabled, $field, $post_id )` | tryb „własne powiązania w każdym języku” dla wybranego pola |
+| `bogoext_acf_translatable_options( $ids )` | identyfikatory stron opcji z osobnymi wartościami dla języków |
+| `bogoext_acf_remap_on_duplicate( true, $field, $post, $locale )` | `false` = „Dodaj tłumaczenie” kopiuje powiązania bez zamiany na tłumaczenia |
 | `bogoext_hreflang( $languages )` | końcowa lista hreflang |
 | `bogoext_switcher_links( $links )` | dane przełącznika `[bogo-dropdown]` |
 | `bogoext_dropdown_html( $html, $links, $atts )` | HTML przełącznika |
@@ -431,6 +482,7 @@ add_filter( 'bogo_localizable_post_types', function ( $types ) {
 - Po zmianie bazy na działającej stronie wyczyść cache strony (LiteSpeed, WP Rocket itp.). Stare adresy przekierowują same.
 - Formularz CF7 ma jeden język. Tłumaczenie to osobny formularz, więc zmiany pól trzeba nanieść w każdej wersji.
 - Moduły ACF, CF7 i TSF są bezczynne, gdy dana wtyczka nie jest aktywna.
+- W trybie „własne powiązania” relacje dwukierunkowe ACF (*bidirectional*) nie są uzupełniane po drugiej stronie przy „Dodaj tłumaczenie”, bo zamiana odbywa się przed zapisem wpisu. Przy ręcznej zmianie pola i zapisie ACF aktualizuje drugą stronę normalnie.
 
 ---
 
@@ -458,6 +510,12 @@ Nie ma kroku budowania (webpack, npm). JS to czysty ES2017 korzystający z globa
 ---
 
 ## Historia zmian
+
+**1.6.0**
+- Nowy moduł (domyślnie wyłączony): tłumaczone strony opcji ACF PRO. Zakładki języków na stronie opcji, wartości języka domyślnego dla języków bez własnych wartości, pola „Wspólne dla wszystkich języków”, usuwanie wartości języka i wybór tłumaczonych stron w ustawieniach.
+
+**1.5.0**
+- ACF: opcjonalny tryb „własne powiązania w każdym języku” (domyślnie wyłączony). Pola Relationship, Post Object i Page Link na przetłumaczonym wpisie pokazują wpisy w jego języku. „Dodaj tłumaczenie” zamienia skopiowane powiązania na opublikowane tłumaczenia, a wpisy z innego języka są oznaczone kodem języka.
 
 **1.4.1**
 - `[bogo-dropdown style="list"]` – prosta lista linków bez stylów i skryptów wtyczki.

@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Bogo Extended 1.4.1\n"
+"Project-Id-Version: Bogo Extended 1.6.0\n"
 "Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -132,8 +132,10 @@ msgid "Enabled"
 msgstr "Włączone"
 
 msgid ""
-"Enables [bogo-dropdown] (styles: popup, toggle, list; options: compact, flags)."
-msgstr "Włącza [bogo-dropdown] (style: popup, toggle, list; opcje: compact, flags)."
+"Enables [bogo-dropdown] (styles: popup, toggle, list; options: compact, "
+"flags)."
+msgstr ""
+"Włącza [bogo-dropdown] (style: popup, toggle, list; opcje: compact, flags)."
 
 #, php-format
 msgid "Form %d"
@@ -545,3 +547,115 @@ msgid ""
 "language."
 msgstr ""
 "Slug „%1$s” (%2$s) nie został zapisany – w tym języku używa go już „%3$s”."
+
+#: includes/admin/settings-page.php
+msgid "ACF: own relations per language"
+msgstr "ACF: własne powiązania w każdym języku"
+
+#: includes/admin/settings-page.php
+msgid ""
+"Off: relationship / post object / page link pickers always list originals "
+"and the translations are shown automatically. On: on a translated post the "
+"pickers list posts in that post's language, so each language can have its "
+"own relations; \"Add translation\" maps copied selections to their published"
+" translations, and items from another language are marked (PL). Requires "
+"\"ACF integration\"."
+msgstr ""
+"Wyłączone: pola relationship / post object / page link zawsze pokazują do "
+"wyboru oryginały, a na stronie automatycznie wyświetlane są ich tłumaczenia."
+" Włączone: na przetłumaczonym wpisie pola pokazują wpisy w języku tego "
+"wpisu, więc każdy język może mieć własne powiązania; „Dodaj tłumaczenie” "
+"zamienia skopiowane powiązania na ich opublikowane tłumaczenia, a wpisy z "
+"innego języka są oznaczone (PL). Wymaga „Integracji z ACF”."
+
+#. translators: %s: language name
+#: includes/modules/acf-options.php
+#, php-format
+msgid ""
+"%s has no values of its own yet – the form shows the default language "
+"values, and so does the site. Saving creates a separate copy for this "
+"language."
+msgstr ""
+"%s nie ma jeszcze własnych wartości – formularz pokazuje wartości języka "
+"domyślnego i tych samych używa strona. Zapisanie utworzy osobną kopię dla "
+"tego języka."
+
+#: includes/modules/acf-options.php
+msgid "ACF options pages translations"
+msgstr "Tłumaczenia stron opcji ACF"
+
+#: includes/modules/acf-options.php
+msgid ""
+"Delete all values of this language? The default language values will be used"
+" again."
+msgstr ""
+"Usunąć wszystkie wartości tego języka? Ponownie będą używane wartości języka"
+" domyślnego."
+
+#: includes/modules/acf-options.php
+msgid "Delete this language's values"
+msgstr "Usuń wartości tego języka"
+
+#: includes/modules/acf-options.php
+msgid "Language of the values"
+msgstr "Język wartości"
+
+#: includes/modules/acf-options.php
+msgid ""
+"Options pages only (Bogo Extended): one value for every language, edited in "
+"the default language. Applies to top-level fields; sub fields follow their "
+"parent."
+msgstr ""
+"Tylko strony opcji (Bogo Extended): jedna wartość dla wszystkich języków, "
+"edytowana w języku domyślnym. Dotyczy pól najwyższego poziomu – pola "
+"podrzędne dziedziczą ustawienie rodzica."
+
+#: includes/modules/acf-options.php
+msgid ""
+"Separate values of ACF PRO options pages for every language, with language "
+"tabs on the options page. A language without its own values uses the default"
+" language. Fields can be marked \"Shared by all languages\" in the field "
+"settings."
+msgstr ""
+"Osobne wartości stron opcji ACF PRO dla każdego języka, z zakładkami języków"
+" na stronie opcji. Język bez własnych wartości używa wartości języka "
+"domyślnego. W ustawieniach pola można zaznaczyć „Wspólne dla wszystkich "
+"języków”."
+
+#: includes/modules/acf-options.php
+msgid "Shared by all languages"
+msgstr "Wspólne dla wszystkich języków"
+
+#: includes/modules/acf-options.php
+msgid "Shared by all languages – edit this field in the default language."
+msgstr "Pole wspólne dla wszystkich języków – edytuj je w języku domyślnym."
+
+#: includes/modules/acf-options.php
+msgid "Sorry, you are not allowed to do that."
+msgstr "Nie masz uprawnień do wykonania tej operacji."
+
+#: includes/modules/acf-options.php
+msgid "The values of this language were deleted."
+msgstr "Wartości tego języka zostały usunięte."
+
+#: includes/modules/acf-options.php
+msgid "Translated options pages"
+msgstr "Tłumaczone strony opcji"
+
+#. translators: %s: language name
+#: includes/modules/acf-options.php
+#, php-format
+msgid ""
+"You are editing the values for %s. Fields added later and fields shared by "
+"all languages use the default language."
+msgstr ""
+"Edytujesz wartości dla języka: %s. Pola dodane później i pola wspólne dla "
+"wszystkich języków używają wartości języka domyślnego."
+
+#: includes/modules/acf-options.php
+msgid ""
+"You are editing the values of the default language. Languages without their "
+"own values use them."
+msgstr ""
+"Edytujesz wartości języka domyślnego. Używają ich też języki bez własnych "
+"wartości."
