@@ -1,189 +1,191 @@
 # Bogo Extended
 
-Rozszerzenie (add-on) do wtyczki **[Bogo](https://wordpress.org/plugins/bogo/)** – oryginalnej, lekkiej wtyczki wielojęzycznej od Rock Lobster Inc. (autor Contact Form 7).
+🇬🇧 English version · 🇵🇱 [Polska wersja](README-pl.md)
 
-To **nie jest fork**. Bogo zostaje nietknięte i aktualizuje się normalnie z WordPress.org. Bogo Extended dokłada brakujące funkcje wyłącznie przez hooki i API Bogo, WordPressa, ACF i Contact Form 7.
+An add-on for **[Bogo](https://wordpress.org/plugins/bogo/)**, the original lightweight multilingual plugin by Rock Lobster Inc. (the author of Contact Form 7).
+
+This is **not a fork**. Bogo stays untouched and keeps updating normally from WordPress.org. Bogo Extended adds the missing features only through the hooks and APIs of Bogo, WordPress, ACF and Contact Form 7.
 
 | | |
 |---|---|
-| Wersja | 1.6.0 |
-| Wymaga | WordPress 6.7+, PHP 7.4+, Bogo 3.9+ |
-| Opcjonalnie | Contact Form 7 6.x, ACF / ACF PRO 6.x, The SEO Framework |
-| Licencja | GPL v2 lub nowsza |
-| Text domain | `bogo-extended` (w zestawie tłumaczenie `pl_PL`) |
+| Version | 1.6.0 |
+| Requires | WordPress 6.7+, PHP 7.4+, Bogo 3.9+ |
+| Optional | Contact Form 7 6.x, ACF / ACF PRO 6.x, The SEO Framework |
+| License | GPL v2 or later |
+| Text domain | `bogo-extended` (`pl_PL` translation included) |
 
 ---
 
-## Instalacja
+## Installation
 
-1. Zainstaluj i włącz **Bogo** (z repozytorium WordPress.org).
-2. Wgraj folder `bogo-extended` do `wp-content/plugins/` i włącz wtyczkę.
-3. Wybierz języki w **Języki → Language Packs** (to ekran Bogo).
-4. Moduły włączasz i wyłączasz w **Języki → Bogo Extended**.
+1. Install and activate **Bogo** (from the WordPress.org repository).
+2. Upload the `bogo-extended` folder to `wp-content/plugins/` and activate the plugin.
+3. Choose your languages in **Languages → Language Packs** (Bogo's screen).
+4. Turn modules on and off in **Languages → Bogo Extended**.
 
-Od WordPressa 6.5 nagłówek `Requires Plugins: bogo` sprawia, że WordPress nie pozwoli włączyć rozszerzenia bez Bogo.
+Since WordPress 6.5, the `Requires Plugins: bogo` header prevents the add-on from being activated without Bogo.
 
-### Pierwsza konfiguracja
+### First-time setup
 
-W **Języki → Bogo Extended**:
+In **Languages → Bogo Extended**:
 
-1. **Tłumaczone typy treści.** Wpisy i strony są tłumaczone zawsze. Zaznacz własne typy treści (CPT), które mają dostać tłumaczenia.
-2. **Moduły.** Domyślnie włączone jest wszystko poza synchronizacją kategorii do tłumaczeń, trybem ACF „własne powiązania w każdym języku” i tłumaczeniem stron opcji ACF. Wyłącz to, czego nie potrzebujesz.
-3. **Tłumaczone bazy adresów** (opcjonalnie). Wpisz bazy adresów typów treści i taksonomii w innych językach, np. `projekte` zamiast `realizacje`.
+1. **Translatable content types.** Posts and pages are always translatable. Tick the custom post types (CPTs) that should get translations as well.
+2. **Modules.** Everything is enabled by default except syncing terms to translations, the ACF "own relations per language" mode and ACF options pages translations. Turn off whatever you don't need.
+3. **Translated URL bases** (optional). Enter the URL bases of content types and taxonomies in other languages, e.g. `projekte` instead of `realizacje`.
 
-## Tłumaczone typy treści
+## Translatable content types
 
-Bogo domyślnie tłumaczy tylko wpisy i strony. Ekran ustawień pokazuje wszystkie zarejestrowane typy treści z panelem w kokpicie. Zaznaczenie typu daje mu wszystko, co mają wpisy i strony:
+Out of the box Bogo only translates posts and pages. The settings screen lists every registered content type that has an admin UI. Ticking a type gives it everything posts and pages have:
 
-- kolumnę tłumaczeń i zakładki języków na liście,
-- tworzenie tłumaczeń z listy i z panelu w edytorze (w klasycznym edytorze przez okno „Language” z Bogo),
-- prefiks języka w adresach (`/de/…`) oraz filtrowanie treści na froncie według języka,
-- możliwość przetłumaczenia bazy adresu (moduł „Tłumaczone bazy adresów”).
+- the translations column and language views in the list,
+- creating translations from the list and from the editor sidebar (in the classic editor through Bogo's "Language" box),
+- the language prefix in URLs (`/de/…`) and filtering content by language on the front end,
+- the option to translate its URL base (the "Translated URL bases" module).
 
-Typy treści dodane do tłumaczenia kodem (filtrem `bogo_localizable_post_types` w motywie lub innej wtyczce) są pokazane jako zaznaczone i zablokowane. Po zmianie listy reguły adresów przebudowują się same.
+Content types made translatable in code (with the `bogo_localizable_post_types` filter in a theme or another plugin) are shown ticked and locked. Rewrite rules are rebuilt automatically when the list changes.
 
-Istniejące wpisy wybranego typu traktowane są jako treści w języku domyślnym. Tłumaczenia dodajesz od razu po zaznaczeniu.
+Existing posts of a newly selected type are treated as default-language content. You can add translations right after ticking the type.
 
 ---
 
-## Moduły
+## Modules
 
-Każdy moduł działa niezależnie i każdy można wyłączyć w ustawieniach.
+Every module works independently and can be switched off in the settings.
 
-### 1. Kolumna „Tłumaczenia” na listach wpisów
+### 1. "Translations" column in post lists
 
-Na listach wpisów, stron i innych tłumaczonych typów treści każdy wiersz dostaje plakietki języków:
+In the lists of posts, pages and other translatable content types every row gets language badges:
 
-| Plakietka | Znaczenie | Kliknięcie |
+| Badge | Meaning | Click |
 |---|---|---|
-| wypełniona | opublikowane tłumaczenie | edycja tłumaczenia |
-| jasna z obramowaniem | szkic, oczekujący, zaplanowany lub prywatny | edycja tłumaczenia |
-| przerywana | brak tłumaczenia | tworzy kopię roboczą i otwiera ją w nowej karcie |
-| z czarną obwódką | język bieżącego wiersza | – |
+| filled | published translation | edit the translation |
+| light with a border | draft, pending, scheduled or private | edit the translation |
+| dashed | no translation | creates a draft copy and opens it in a new tab |
+| black outline | language of the current row | – |
 
-Tłumaczenie powstaje przez **oficjalny endpoint REST Bogo**, więc obowiązują jego uprawnienia: rola musi móc tworzyć treści danego typu, a użytkownik musi mieć dostęp do danego języka.
+Translations are created through **Bogo's official REST endpoint**, so its permissions apply: the role must be able to create content of that type and the user must have access to the language.
 
-Wszystkie grupy tłumaczeń widoczne na stronie listy wczytywane są **dwoma zapytaniami SQL**, a nie jednym zapytaniem na wiersz.
+All translation groups visible on a list page are loaded with **two SQL queries**, not one query per row.
 
-### 2. Widok „Tylko oryginały” i zakładki języków
+### 2. "Originals only" view and language views
 
-Po wejściu na listę widać tylko treści w języku domyślnym, więc tłumaczenia nie zaśmiecają listy. Nad tabelą, obok zakładek statusów, są zakładki:
+When you open a list, you see only default-language content, so translations don't clutter it. Above the table, next to the status views, there are views:
 
-**Tylko oryginały | Wszystkie języki | Polski (12) | Deutsch (8) | English (3)**
+**Originals only | All languages | Polski (12) | Deutsch (8) | English (3)**
 
-- *Tylko oryginały* to widok domyślny.
-- *Wszystkie języki* pokazuje każdą wersję językową.
-- Zakładka języka pokazuje tylko treści w tym języku. Liczba w nawiasie liczy wszystkie statusy widoczne w „Wszystkie” (bez kosza).
+- *Originals only* is the default view.
+- *All languages* shows every language version.
+- A language view shows only content in that language. The number counts all statuses shown under "All" (trash excluded).
 
-Wybrany język listy nie zmienia języka panelu administracyjnego. Filtr języków z Bogo (lista rozwijana obok „Filtruj”) działa jak dotąd. Gdy widok „Tylko oryginały” jest wyłączony w ustawieniach, zostają zakładki *Wszystkie języki* i języki.
+Picking a language in the list does not change the language of the admin interface. Bogo's language filter (the dropdown next to "Filter") works as before. When the "Originals only" view is switched off in the settings, the *All languages* and language views remain.
 
-Widok nie gubi treści: wpisy, które istnieją **tylko w innym języku** (bez wersji domyślnej), są nadal pokazywane. Wyszukiwanie i Kosz zawsze pokazują wszystko.
+The view never hides content: posts that exist **only in another language** (with no default-language version) are still shown. Search and Trash always show everything.
 
-### 3. Panel „Tłumaczenia” w edytorze blokowym
+### 3. "Translations" sidebar in the block editor
 
-W nagłówku edytora pojawia się przypinana ikona tłumaczeń. Otwiera panel ze wszystkimi językami, w którym widać:
+A pinnable translations icon appears in the editor header. It opens a panel listing all languages with:
 
-- status i tytuł każdego tłumaczenia,
-- przyciski **Edytuj** oraz **Zobacz** albo **Podgląd**,
-- przycisk **Utwórz** dla brakujących języków (kopia otwiera się w nowej karcie).
+- the status and title of each translation,
+- **Edit** and **View** or **Preview** buttons,
+- a **Create** button for missing languages (the copy opens in a new tab).
 
-Panel korzysta z oficjalnego API `PluginSidebar`. Natywny panel „Language” z Bogo nadal działa obok.
+The panel uses the official `PluginSidebar` API. Bogo's native "Language" panel keeps working next to it.
 
-### 4. Ukrycie menu języka w pasku administracyjnym
+### 4. Hide the toolbar language menu
 
-Bogo dodaje w górnym pasku, obok „Witaj, …”, menu z nazwą języka. Ono **nie przełącza języka witryny**, tylko język interfejsu panelu dla zalogowanego użytkownika, przez co łatwo je pomylić. Moduł usuwa to menu (domyślnie włączony). Język panelu nadal ustawisz w **Użytkownicy → Profil → Język**.
+Bogo adds a menu with the language name to the admin toolbar, next to "Howdy, …". It **does not switch the site language**, only the admin interface language of the logged-in user, which makes it easy to misread. The module removes that menu (enabled by default). You can still set the admin language in **Users → Profile → Language**.
 
-### 5. Tłumaczenia menu
+### 5. Menu translations
 
-**Menu klasyczne** (Wygląd → Menu). Każda pozycja ma rozwijaną sekcję *Tłumaczenia* z polami dla każdego języka pobocznego:
+**Classic menus** (Appearance → Menus). Every menu item gets a collapsible *Translations* section with fields for each secondary language:
 
-- **Etykieta**. Puste pole oznacza ustawienie automatyczne: tytuł przetłumaczonej strony albo przetłumaczona nazwa kategorii.
-- **URL**, tylko dla własnych linków. Puste pole oznacza automatyczną lokalizację linku do własnej treści.
-- **Opis**.
+- **Navigation label**. An empty field means automatic: the title of the translated page or the translated category name.
+- **URL**, for custom links only. An empty field means a link to the site's own content is localized automatically.
+- **Description**.
 
-Na froncie w języku pobocznym:
+On the front end in a secondary language:
 
-- pozycja wskazująca stronę lub wpis prowadzi do **opublikowanego tłumaczenia** i bierze jego tytuł; działa też podświetlenie `current-menu-item`,
-- własne linki do treści serwisu są lokalizowane, a linki zewnętrzne zostają bez zmian,
-- pozycje kategorii używają przetłumaczonej nazwy.
+- an item pointing to a page or post leads to its **published translation** and takes its title; `current-menu-item` highlighting works too,
+- custom links to the site's own content are localized, external links stay unchanged,
+- category items use the translated name.
 
-W panelu „Dodaj pozycje menu” widać tylko oryginały (tłumaczenia są podstawiane automatycznie).
+The "Add menu items" panel shows only originals (translations are swapped in automatically).
 
-Mechanizm Bogo „Wyświetlaj na stronach w…” (pokazywanie lub ukrywanie pozycji per język) działa bez zmian i można go łączyć z tymi polami.
+Bogo's "Displayed on pages in…" mechanism (showing or hiding items per language) works unchanged and can be combined with these fields.
 
-**Motywy blokowe** (blok Nawigacja). Linki do stron, wpisów i kategorii oraz własne URL-e są przepisywane na wersję w bieżącym języku. Etykieta jest tłumaczona, jeśli była równa oryginalnemu tytułowi lub nazwie.
+**Block themes** (Navigation block). Links to pages, posts and categories, as well as custom URLs, are rewritten to the version in the current language. The label is translated when it was equal to the original title or name.
 
-### 6. Tłumaczenia kategorii, tagów i innych taksonomii
+### 6. Category, tag and other taxonomy translations
 
-Na ekranie edycji terminu pojawiają się pola **Nazwa**, **Slug** i **Opis** dla każdego języka pobocznego. Taksonomie wybierasz w ustawieniach. Domyślnie są to kategorie i tagi, a dostępne są np. `product_cat` z WooCommerce.
+The term edit screen gets **Name**, **Slug** and **Description** fields for each secondary language. You choose the taxonomies in the settings. Categories and tags are selected by default, and others are available too, e.g. WooCommerce's `product_cat`.
 
-- Puste pole oznacza, że użyty zostanie oryginał albo tłumaczenie z ekranu Bogo *Terms Translation*. Oba mechanizmy współistnieją.
-- Tłumaczenie obowiązuje wszędzie, gdzie WordPress pobiera termin: tytuły archiwów, `the_category()`, listy kategorii, menu, breadcrumbs.
-- Opis jest filtrowany jak natywny opis terminu. Użytkownicy bez `unfiltered_html` mogą używać tylko podstawowych tagów.
+- An empty field means the original is used, or the translation from Bogo's *Terms Translation* screen. Both mechanisms coexist.
+- The translation applies wherever WordPress fetches the term: archive titles, `the_category()`, category lists, menus, breadcrumbs.
+- The description is filtered like the native term description. Users without `unfiltered_html` can only use basic tags.
 
-#### Tłumaczone slugi terminów
+#### Translated term slugs
 
-W Bogo termin jest jeden dla wszystkich języków, więc bez tego pola adres miałby polski slug z prefiksem języka (`/de/category/aktualnosci/`). Pole **Slug** w sekcji *Tłumaczenia* (Wpisy → Kategorie → edycja kategorii) ustawia slug dla danego języka:
+In Bogo a term is shared by all languages, so without this field the URL would have the Polish slug with a language prefix (`/de/category/aktualnosci/`). The **Slug** field in the *Translations* section (Posts → Categories → edit category) sets the slug for a language:
 
-| Język | Bez tłumaczenia sluga | Ze slugiem `neuigkeiten` | + baza z modułu 16 |
+| Language | Slug not translated | With slug `neuigkeiten` | + base from module 16 |
 |---|---|---|---|
-| PL (domyślny) | `/category/aktualnosci/` | `/category/aktualnosci/` | `/category/aktualnosci/` |
+| PL (default) | `/category/aktualnosci/` | `/category/aktualnosci/` | `/category/aktualnosci/` |
 | DE | `/de/category/aktualnosci/` | `/de/category/neuigkeiten/` | `/de/kategorie/neuigkeiten/` |
 
-- Placeholder pola pokazuje oryginalny slug. Puste pole albo wartość równa oryginałowi oznacza oryginał.
-- Wpisaną wartość normalizuje `sanitize_title()` (np. `Construction Sites` → `construction-sites`), tak jak natywny slug.
-- **Kategorie zagnieżdżone** dostają przetłumaczony slug na każdym poziomie: `/de/kategorie/neuigkeiten/baustellen/`. Rodzic bez tłumaczenia zostaje z oryginalnym slugiem.
-- Linki z `get_term_link()` (menu, `the_category()`, widżety, sitemapy, breadcrumbs) dostają slug języka, w którym jest link. Przełącznik języków i hreflang (z `x-default`) na archiwum terminu podają adres z właściwym slugiem dla każdego języka.
-- **Przekierowanie 301** ze sluga oryginalnego w danym języku: `/de/category/aktualnosci/` → `/de/category/neuigkeiten/`, z zachowaniem paginacji i parametrów. Feed (`/de/category/neuigkeiten/feed/`) działa.
-- Slug przetłumaczony działa tylko w swoim języku. `/category/neuigkeiten/` zwraca 404, a w języku bez tłumaczenia obowiązuje oryginał.
-- **Walidacja przy zapisie** odrzuca slug używany w tej samej taksonomii w tym języku przez inny termin, zarówno jego tłumaczenie, jak i oryginalny slug innego terminu bez tłumaczenia. Pole wraca wtedy do poprzedniej wartości, nad formularzem pojawia się komunikat, a reszta tłumaczeń się zapisuje.
-- Działa dla każdej taksonomii z listy w ustawieniach. Wymaga „ładnych” bezpośrednich odnośników. Przy `?cat=12` slug nie występuje w adresie.
+- The field placeholder shows the original slug. An empty field, or a value equal to the original, means the original.
+- The value is normalized with `sanitize_title()` (e.g. `Construction Sites` → `construction-sites`), just like the native slug.
+- **Nested categories** get the translated slug on every level: `/de/kategorie/neuigkeiten/baustellen/`. A parent without a translation keeps its original slug.
+- Links from `get_term_link()` (menus, `the_category()`, widgets, sitemaps, breadcrumbs) get the slug of the link's language. The language switcher and hreflang (with `x-default`) on a term archive give the right slug for each language.
+- **301 redirect** from the original slug in that language: `/de/category/aktualnosci/` → `/de/category/neuigkeiten/`, keeping pagination and query parameters. The feed (`/de/category/neuigkeiten/feed/`) works.
+- A translated slug only works in its own language. `/category/neuigkeiten/` returns 404, and a language without a translation uses the original.
+- **Validation on save** rejects a slug already used in the same taxonomy and language by another term, either as its translation or as the original slug of another term without a translation. The field then keeps its previous value, a notice appears above the form and the rest of the translations is saved.
+- Works for every taxonomy selected in the settings. Requires "pretty" permalinks. With `?cat=12` there is no slug in the URL.
 
-### 7. Synchronizacja kategorii i tagów (domyślnie wyłączona)
+### 7. Sync terms to translations (off by default)
 
-Gdy zmienisz kategorie lub tagi wpisu w języku domyślnym, te same terminy trafiają do jego tłumaczeń. Listę taksonomii można zawęzić filtrem `bogoext_sync_taxonomies`.
+When you change the categories or tags of a default-language post, the same terms are applied to its translations. The list of taxonomies can be narrowed with the `bogoext_sync_taxonomies` filter.
 
-### 8. Automatyczna lokalizacja linków w treści
+### 8. Automatic link localization
 
-Na stronach w języku pobocznym linki w treści (`the_content`, widgety tekstowe i blokowe) prowadzące do wpisów lub stron **w języku domyślnym** są zamieniane na adres opublikowanego tłumaczenia. Parametry `?query` i `#kotwica` są zachowywane.
+On secondary-language pages, links in the content (`the_content`, text and block widgets) pointing to **default-language** posts or pages are replaced with the URL of the published translation. `?query` parameters and `#anchors` are kept.
 
-Nie są zmieniane:
+Left unchanged:
 
-- linki zewnętrzne, `mailto:`, `tel:`, kotwice `#…`, pliki i adresy `wp-admin`, `wp-json` oraz `feed`,
-- linki, które **celowo** wskazują inny język, np. „Przeczytaj po niemiecku”,
-- linki z `class="no-localize"`, `data-bogo-keep` albo `hreflang`,
-- linki do treści, która nie ma opublikowanego tłumaczenia.
+- external links, `mailto:`, `tel:`, `#…` anchors, files, and `wp-admin`, `wp-json` and `feed` URLs,
+- links that **deliberately** point to another language, e.g. "Read in German",
+- links with `class="no-localize"`, `data-bogo-keep` or `hreflang`,
+- links to content without a published translation.
 
-Link do strony głównej prowadzi do strony głównej w bieżącym języku. W oknie wstawiania linku widać tylko oryginały.
+A link to the home page leads to the home page in the current language. The link insertion dialog shows only originals.
 
-Parsowanie odbywa się przez `WP_HTML_Tag_Processor` (parser HTML WordPressa), a nie przez wyrażenia regularne. Wyniki są cache'owane w obrębie żądania i w object cache.
+Parsing is done with `WP_HTML_Tag_Processor` (WordPress's HTML parser), not regular expressions. Results are cached per request and in the object cache.
 
-### 9. Integracja z ACF
+### 9. ACF integration
 
-Na stronach w języku pobocznym:
+On secondary-language pages:
 
-| Typ pola | Zachowanie |
+| Field type | Behaviour |
 |---|---|
-| Post Object (pojedyncze i wielokrotne, zwracające obiekt lub ID) | zwraca tłumaczenie wybranego wpisu |
-| Relationship | jak wyżej, dla każdej pozycji |
-| Page Link | zwraca URL tłumaczenia |
-| Link | URL zlokalizowany. Tytuł zamieniany na przetłumaczony tylko wtedy, gdy był równy tytułowi wpisu |
+| Post Object (single and multiple, returning an object or an ID) | returns the translation of the selected post |
+| Relationship | as above, for every item |
+| Page Link | returns the translation's URL |
+| Link | URL localized. The title is replaced with the translated one only when it was equal to the post title |
 
-W panelu selektory wpisów ACF pokazują tylko oryginały, bo tłumaczenie jest podstawiane automatycznie. Można to wyłączyć filtrem `bogoext_acf_hide_translations`.
+In the admin, ACF post pickers show only originals, because the translation is swapped in automatically. This can be turned off with the `bogoext_acf_hide_translations` filter.
 
-#### Własne powiązania w każdym języku (domyślnie wyłączone)
+#### Own relations per language (off by default)
 
-Tryb domyślny zakłada, że powiązania są takie same we wszystkich językach (1:1 z oryginałem). Gdy jakiś język potrzebuje innych powiązań, włącz **Języki → Bogo Extended → ACF: własne powiązania w każdym języku**. Wtedy:
+The default mode assumes relations are the same in every language (1:1 with the original). When a language needs different relations, enable **Languages → Bogo Extended → ACF: own relations per language**. Then:
 
-- **Wybór w panelu.** Na przetłumaczonym wpisie (np. specjalizacji w języku angielskim) pola Relationship, Post Object i Page Link pokazują do wyboru wpisy w języku tego wpisu, czyli angielskie wersje wpisów, a nie oryginały. Dotyczy to też własnych typów treści. Wpisy typów, które nie są tłumaczone, widać zawsze.
-- **Wpis w języku domyślnym** działa bez zmian i pokazuje oryginały.
-- **„Dodaj tłumaczenie”** kopiuje powiązania z oryginału i od razu zamienia je na opublikowane tłumaczenia w nowym języku. Wpis bez opublikowanego tłumaczenia zostaje jako oryginał. Na stronie i tak wyświetli się jego tłumaczenie, gdy tylko zostanie opublikowane. Dotyczy to także pól w grupach, repeaterach i treści elastycznej.
-- **Oznaczenie języka.** Wybrany wpis z innego języka niż edytowany jest oznaczony kodem, np. `Kardiologia (PL)`, więc od razu widać, które powiązania pochodzą jeszcze z oryginału.
-- **Na stronie** wyświetlane jest dokładnie to, co wybrano w danym języku. Pozycje z języka domyślnego (np. dawne powiązania sprzed włączenia opcji) są nadal zamieniane na tłumaczenia.
+- **Picking in the admin.** On a translated post (e.g. an English specialization) the Relationship, Post Object and Page Link fields list posts in that post's language, i.e. the English versions, not the originals. Custom post types included. Posts of types that are not translated are always listed.
+- **A default-language post** works as before and lists originals.
+- **"Add translation"** copies the relations from the original and immediately replaces them with their published translations in the new language. A post without a published translation stays as the original; the site still shows its translation as soon as it is published. This also applies to fields inside groups, repeaters and flexible content.
+- **Language marker.** A selected post in another language than the edited one is marked with its code, e.g. `Cardiology (PL)`, so you can see at a glance which relations still come from the original.
+- **On the site** exactly what was selected for that language is shown. Default-language items (e.g. relations saved before the option was enabled) are still swapped for their translations.
 
-Pola na stronach opcji, terminach i profilach użytkowników nie mają języka, więc zawsze pokazują oryginały. Mapowanie przy tworzeniu tłumaczenia wyłączysz filtrem `bogoext_acf_remap_on_duplicate`.
+Fields on options pages, terms and user profiles have no language, so they always list originals (translated options pages from module 18 are the exception). Mapping on "Add translation" can be turned off with the `bogoext_acf_remap_on_duplicate` filter.
 
-Tryb można też włączyć tylko dla wybranych pól, przy wyłączonej opcji globalnej. Pole rozpoznawaj po kluczu, bo nazwa pola zmienia się podczas wyświetlania formularza:
+The mode can also be enabled for selected fields only, with the global option off. Identify the field by its key, because the field name changes while the form is rendered:
 
 ```php
 add_filter( 'bogoext_acf_own_relations', function ( $enabled, $field ) {
@@ -191,39 +193,39 @@ add_filter( 'bogoext_acf_own_relations', function ( $enabled, $field ) {
 }, 10, 2 );
 ```
 
-### 10. Tłumaczone wzorce synchronizowane (reusable blocks)
+### 10. Translatable synced patterns (reusable blocks)
 
-Wzorce (`wp_block`) stają się tłumaczalne jak strony: mają przycisk „Dodaj tłumaczenie”, plakietki i panel w edytorze. W treści nadal wstawiasz wzorzec w języku domyślnym, a na stronie w innym języku renderuje się jego **opublikowane tłumaczenie**. W inserterze edytora widać tylko wzorce w języku domyślnym.
+Patterns (`wp_block`) become translatable like pages: they get the "Add translation" button, badges and the editor sidebar. In the content you still insert the default-language pattern, and pages in another language render its **published translation**. The editor inserter shows only default-language patterns.
 
-### 11. Przełącznik języków `[bogo-dropdown]`
+### 11. Language switcher `[bogo-dropdown]`
 
 ```text
-[bogo-dropdown]                          rozwijane menu (hover / klik)
-[bogo-dropdown style="toggle"]           rozwija się w miejscu (menu mobilne)
-[bogo-dropdown style="list"]             zwykła lista <ul> z linkami, bez stylów i skryptów
-[bogo-dropdown compact="1"]              krótkie kody: PL, DE, EN
-[bogo-dropdown flags="1"]                flagi (emoji Bogo) przed nazwą
-[bogo-dropdown hide_missing="0"]         pokazuje też języki bez tłumaczenia (jako tekst)
-[bogo-dropdown class="moja-klasa"]       dodatkowa klasa CSS
+[bogo-dropdown]                          dropdown menu (hover / click)
+[bogo-dropdown style="toggle"]           expands in place (mobile menus)
+[bogo-dropdown style="list"]             plain <ul> of links, no styles or scripts
+[bogo-dropdown compact="1"]              short codes: PL, DE, EN
+[bogo-dropdown flags="1"]                flags (Bogo's emoji) before the name
+[bogo-dropdown hide_missing="0"]         also shows languages without a translation (as text)
+[bogo-dropdown class="my-class"]         extra CSS class
 ```
 
-W szablonie PHP:
+In a PHP template:
 
 ```php
 <?php echo do_shortcode( '[bogo-dropdown style="toggle" compact="1"]' ); ?>
 ```
 
-Szczegóły działania:
+Details:
 
-- Pokazywane są tylko języki, do których jest dokąd przejść: opublikowane tłumaczenie albo archiwum. Przełącznik nie pojawia się, jeśli jest mniej niż 2 języki.
-- Przycisk jest prawdziwym `<button>` z `aria-expanded`. Działa z klawiatury, zamyka się klawiszem Esc i kliknięciem poza menu.
-- Przy 5+ i 9+ językach lista układa się w 2 lub 3 kolumny.
-- Wygląd zmienisz zmiennymi CSS: `--bogoext-bg`, `--bogoext-fg`, `--bogoext-border`, `--bogoext-hover`, `--bogoext-radius`.
-- CSS i JS ładują się tylko na stronach, na których jest shortcode.
+- Only languages with somewhere to go are shown: a published translation or an archive. The switcher is not shown with fewer than 2 languages.
+- The toggle is a real `<button>` with `aria-expanded`. It works with the keyboard and closes with Esc or a click outside.
+- With 5+ and 9+ languages the list is laid out in 2 or 3 columns.
+- Change the look with CSS variables: `--bogoext-bg`, `--bogoext-fg`, `--bogoext-border`, `--bogoext-hover`, `--bogoext-radius`.
+- CSS and JS are loaded only on pages that contain the shortcode.
 
-#### Prosta lista (`style="list"`)
+#### Plain list (`style="list"`)
 
-Wariant bez jakiegokolwiek stylowania: wtyczka nie ładuje swojego CSS ani JS, nie ma przycisku ani kontenera `<div>`, tylko czysty HTML:
+A variant with no styling at all: the plugin loads none of its CSS or JS, there is no button and no `<div>` wrapper, just plain HTML:
 
 ```html
 <ul class="bogoext-list">
@@ -232,236 +234,236 @@ Wariant bez jakiegokolwiek stylowania: wtyczka nie ładuje swojego CSS ani JS, n
 </ul>
 ```
 
-Działają opcje `compact`, `flags`, `hide_missing` i `class`. Klasa `bogoext-list` i `is-current` są tylko zaczepami dla motywu – wtyczka nie przypisuje do nich żadnych reguł.
+The `compact`, `flags`, `hide_missing` and `class` options work. The `bogoext-list` and `is-current` classes are only hooks for the theme; the plugin attaches no rules to them.
 
-Natywny blok i widget przełącznika z Bogo działają bez zmian.
+Bogo's native switcher block and widget keep working unchanged.
 
-### 12. Tłumaczenia formularzy Contact Form 7
+### 12. Contact Form 7 translations
 
-Każdy język ma **własny, pełny formularz CF7**: pola, etykiety, komunikaty walidacji, treść e-maili i ustawienia dodatkowe. Formularze są połączone w grupę, a na stronie wstawiasz **jeden shortcode lub blok**. Odwiedzający zobaczy wersję w swoim języku.
+Every language has **its own complete CF7 form**: fields, labels, validation messages, email content and additional settings. The forms are linked into a group, and on the page you insert **one shortcode or block**. Visitors see the version in their language.
 
-Jak przetłumaczyć formularz:
+How to translate a form:
 
-1. Otwórz formularz w **Kontakt → Formularze**. W polu *Status* (z prawej) jest sekcja **Język formularza / Tłumaczenia**.
-2. Ustaw *Język formularza*, jeśli różni się od domyślnego.
-3. Kliknij przerywaną plakietkę języka, np. **DE**. Powstanie kopia formularza „Tytuł [DE]” w tym języku i od razu otworzy się do edycji.
-4. Przetłumacz pola, komunikaty i treść maili, a potem zapisz.
-5. W treści strony zostaw shortcode oryginału, np. `[contact-form-7 id="7dc7d64" title="Formularz PL"]`. Na `/de/...` wyświetli się formularz DE.
+1. Open the form in **Contact → Contact Forms**. The *Status* box (on the right) has a **Form language / Translations** section.
+2. Set the *Form language* if it differs from the default one.
+3. Click the dashed language badge, e.g. **DE**. A copy of the form, "Title [DE]", is created in that language and opens for editing right away.
+4. Translate the fields, messages and emails, then save.
+5. Keep the original's shortcode in the page content, e.g. `[contact-form-7 id="7dc7d64" title="Form PL"]`. On `/de/...` the DE form is shown.
 
-Dodatkowo:
+Also:
 
-- Istniejący formularz możesz dołączyć do grupy ręcznie w polu **Tłumaczenie formularza** (gdy formularze tworzyłeś wcześniej osobno).
-- Na liście formularzy jest kolumna **Języki** z plakietkami całej grupy.
-- Wysyłka działa normalnie: CF7 obsługuje przetłumaczony formularz z jego własnymi mailami i komunikatami, a jego wbudowane komunikaty przełączają się na język formularza.
-- Brak tłumaczenia oznacza, że wyświetla się oryginał.
-- Usunięcie oryginału nie rozbija grupy: najstarsze tłumaczenie zostaje nowym oryginałem.
-- Podmiana działa w shortcode, w bloku CF7, w page builderach i w `do_shortcode()`, bo wpięta jest w `shortcode_atts_wpcf7`.
+- An existing form can be added to a group manually in the **Translation of** field (when the forms were created separately before).
+- The forms list has a **Languages** column with badges for the whole group.
+- Submission works normally: CF7 handles the translated form with its own emails and messages, and its built-in messages switch to the form's language.
+- No translation means the original is shown.
+- Deleting the original does not break the group: the oldest translation becomes the new original.
+- The swap works in the shortcode, the CF7 block, page builders and `do_shortcode()`, because it hooks into `shortcode_atts_wpcf7`.
 
-### 13. Bezpieczne „Dodaj tłumaczenie”
+### 13. Safe "Add translation"
 
-Bogo przy kopiowaniu wpisu traci **wszystkie ukośniki wsteczne** (`\`). Atrybuty bloków typu `"\u003c"` zamieniają się w `"u003c"`, a `\"` w `"`, co psuje JSON bloku. Uszkadzane są też dane JSON w polach meta (Elementor, bloki ACF, page buildery). Moduł naprawia to przy każdym kopiowaniu, także przy kopiowaniu przez Bogo, i nie przenosi na tłumaczenie meta `_edit_lock`, `_edit_last`, `_wp_old_slug` i podobnych. Listę rozszerzysz filtrem `bogoext_duplicate_excluded_meta`.
+When Bogo copies a post it loses **every backslash** (`\`). Block attributes such as `"<"` turn into `"u003c"` and `\"` into `"`, which breaks the block's JSON. JSON stored in meta fields (Elementor, ACF blocks, page builders) gets corrupted too. The module fixes this on every copy, including copies made by Bogo itself, and does not carry `_edit_lock`, `_edit_last`, `_wp_old_slug` and similar meta over to the translation. Extend the list with the `bogoext_duplicate_excluded_meta` filter.
 
-> Sprawdzone na żywym WordPressie 7.1.3 z Bogo 3.9.3. Bez modułu kopia bloku `{"placeholder":"A\u003cB \"q\""}` staje się `{"placeholder":"Au003cB "q""}` (blok uszkodzony). Z modułem kopia jest identyczna z oryginałem.
+> Verified on a live WordPress 7.1.3 with Bogo 3.9.3. Without the module, a copy of the block `{"placeholder":"A<B \"q\""}` becomes `{"placeholder":"Au003cB "q""}` (broken block). With the module the copy is identical to the original.
 
-### 14. Poprawki hreflang
+### 14. hreflang fixes
 
-- W `<link rel="alternate" hreflang>` są tylko **opublikowane** tłumaczenia. Bogo wypisuje też szkice i treści prywatne, co ujawnia ich adresy.
-- Dodaje `hreflang="x-default"` wskazujący wersję w języku domyślnym.
-- Pomija hreflang na stronach 404, wyszukiwania i podglądu oraz przy treści istniejącej tylko w jednym języku.
-- Na stronach 404 i wyszukiwania przełącznik języków prowadzi na stronę główną danego języka.
+- `<link rel="alternate" hreflang>` contains only **published** translations. Bogo also prints drafts and private content, which exposes their URLs.
+- Adds `hreflang="x-default"` pointing to the default-language version.
+- Skips hreflang on 404, search and preview pages and for content that exists in one language only.
+- On 404 and search pages the language switcher leads to the home page of each language.
 
-### 15. The SEO Framework – przetłumaczona strona główna
+### 15. The SEO Framework – translated front page
 
-Na przetłumaczonej statycznej stronie głównej TSF bierze tytuł i opis z ustawień globalnych, czyli w języku domyślnym. Moduł podstawia tytuł i opis SEO ustawione na przetłumaczonej stronie. Działa tylko przy aktywnym TSF.
+On a translated static front page, TSF takes the title and description from its global settings, i.e. in the default language. The module uses the SEO title and description set on the translated page instead. Works only when TSF is active.
 
-### 16. Tłumaczone bazy adresów (typy treści i taksonomie)
+### 16. Translated URL bases (content types and taxonomies)
 
-Bogo tłumaczy slugi pojedynczych wpisów, bo każde tłumaczenie jest osobnym wpisem z własnym slugiem. **Bazę** adresu zostawia jednak w języku domyślnym. Ten moduł pozwala ją przetłumaczyć:
+Bogo translates the slugs of single posts, because every translation is a separate post with its own slug. It leaves the URL **base** in the default language, though. This module lets you translate it:
 
-| Język | Bez modułu | Z modułem |
+| Language | Without the module | With the module |
 |---|---|---|
-| PL (domyślny) | `/realizacje/projekt-x/` | `/realizacje/projekt-x/` |
+| PL (default) | `/realizacje/projekt-x/` | `/realizacje/projekt-x/` |
 | DE | `/de/realizacje/projekt-x/` | `/de/projekte/projekt-x/` |
-| DE, archiwum | `/de/realizacje/` | `/de/projekte/` |
-| DE, kategoria | `/de/category/aktualnosci/` | `/de/kategorie/aktualnosci/` (slug terminu: moduł 6) |
+| DE, archive | `/de/realizacje/` | `/de/projekte/` |
+| DE, category | `/de/category/aktualnosci/` | `/de/kategorie/aktualnosci/` (term slug: module 6) |
 
-**Konfiguracja.** W **Języki → Bogo Extended → Tłumaczone bazy adresów** jest tabela z wierszem dla każdego tłumaczonego typu treści i taksonomii oraz kolumną dla każdego języka. Puste pole oznacza oryginalną bazę. Gdy archiwum typu treści ma inny slug niż wpisy (`has_archive => 'nasza-oferta'`), dostaje osobny wiersz.
+**Setup.** **Languages → Bogo Extended → Translated URL bases** has a table with a row for every translatable content type and taxonomy and a column for every language. An empty field means the original base. When a content type's archive has a different slug than its posts (`has_archive => 'nasza-oferta'`), it gets its own row.
 
-**Co obejmuje:**
-- wpisy, archiwa (z paginacją i feedem) i archiwa taksonomii pod nowym adresem,
-- linki z `get_permalink()`, `get_post_type_archive_link()` i `get_term_link()`, a więc także menu, przełącznik języków, hreflang, sitemapy i linki w motywie,
-- **przekierowanie 301** ze starego adresu (`/de/realizacje/x/` → `/de/projekte/x/`), z zachowaniem parametrów `?utm=…`,
-- na stronach archiwów przełącznik i hreflang podają bazę właściwą dla każdego języka (Bogo zostawiłoby bazę bieżącego języka).
+**What it covers:**
+- posts, archives (with pagination and feeds) and taxonomy archives under the new URL,
+- links from `get_permalink()`, `get_post_type_archive_link()` and `get_term_link()`, and therefore menus, the language switcher, hreflang, sitemaps and theme links,
+- a **301 redirect** from the old URL (`/de/realizacje/x/` → `/de/projekte/x/`), keeping `?utm=…` parameters,
+- on archive pages the switcher and hreflang give the right base for each language (Bogo would keep the base of the current language).
 
-**Walidacja przy zapisie** odrzuca słowa zarezerwowane (`page`, `feed`, `wp-json`, kody języków…), bazę zajętą przez stronę w danym języku oraz bazę użytą dwa razy w tym samym języku. Błędne pole wraca do poprzedniej wartości, a reszta się zapisuje.
+**Validation on save** rejects reserved words (`page`, `feed`, `wp-json`, language codes…), a base taken by a page in that language and a base used twice in the same language. An invalid field keeps its previous value and the rest is saved.
 
-**Wydajność** (zmierzone na testowej instalacji: 2 typy treści, 3 taksonomie, 3 języki):
-- **Reguły adresów.** Moduł dodał 75 reguł (było 281, jest 356). Dopasowanie adresu strony trwa dłużej o około 0,03–0,04 ms na żądanie.
-- **Linki.** Podmiana bazy kosztuje około 1,4 µs na link i nie wykonuje żadnych zapytań do bazy. 100 linków na stronie to około 0,15 ms.
-- **Przebudowa reguł** odbywa się tylko po zmianie baz lub włączeniu albo wyłączeniu modułu. WordPress buduje je wtedy na nowo przy następnym wejściu, a nigdy przy zwykłym ruchu.
+**Performance** (measured on a test install: 2 content types, 3 taxonomies, 3 languages):
+- **Rewrite rules.** The module added 75 rules (281 before, 356 after). Matching a page URL takes about 0.03–0.04 ms longer per request.
+- **Links.** Replacing the base costs about 1.4 µs per link and runs no database queries. 100 links on a page take about 0.15 ms.
+- **Rules are rebuilt** only after the bases change or the module is switched on or off. WordPress then rebuilds them on the next visit, never during normal traffic.
 
-Moduł nie działa przy „prostych” bezpośrednich odnośnikach (`?p=123`).
+The module does not work with "plain" permalinks (`?p=123`).
 
-### 17. Tłumaczenie fraz motywu (Języki → Tłumaczenie fraz)
+### 17. Theme strings translation (Languages → Strings Translation)
 
-Do tłumaczenia tekstów zapisanych w kodzie motywu: przycisków, etykiet, stopki, komunikatów, czyli wszystkiego, co motyw wypisuje przez `__()`, `_e()`, `esc_html__()`, `_x()`, `_n()` itd. Ekran jest w menu **Języki → Tłumaczenie fraz**.
+For translating texts written in the theme code: buttons, labels, the footer, messages – everything the theme prints through `__()`, `_e()`, `esc_html__()`, `_x()`, `_n()` etc. The screen is in **Languages → Strings Translation**.
 
-**Skanowanie.** Przy pierwszym wejściu na ekran moduł skanuje pliki PHP motywu głównego i potomnego. Wynik zapisuje w bazie, więc kolejne wejścia nie skanują. Skan powtarza się sam po zmianie motywu lub jego wersji (np. po aktualizacji), a ręcznie uruchomisz go przyciskiem **Skanuj motyw ponownie**.
-- Skaner używa tokenizera PHP, a nie wyrażeń regularnych. Poprawnie czyta frazy z przecinkami, cudzysłowami i łączone kropką (`'a' . 'b'`), a pomija wywołania metod (`$obj->__()`).
-- Zapisuje kontekst (`_x`), liczbę mnogą (`_n`), komentarze dla tłumaczy (`/* translators: … */`) i miejsca użycia (`plik.php:linia`).
-- Pomija katalogi `vendor`, `node_modules`, `tests` oraz pliki większe niż 1 MB.
-- Testowy motyw (twentytwentyone, 197 wywołań) skanuje się w około 0,4 s.
+**Scanning.** On the first visit to the screen the module scans the PHP files of the parent and child theme. The result is stored in the database, so later visits don't scan again. The scan repeats automatically when the theme or its version changes (e.g. after an update), and you can run it manually with **Rescan theme**.
+- The scanner uses the PHP tokenizer, not regular expressions. It correctly reads strings with commas, quotes and concatenation (`'a' . 'b'`), and skips method calls (`$obj->__()`).
+- It records the context (`_x`), plurals (`_n`), translator comments (`/* translators: … */`) and references (`file.php:line`).
+- It skips the `vendor`, `node_modules` and `tests` directories and files larger than 1 MB.
+- A test theme (twentytwentyone, 197 calls) scans in about 0.4 s.
 
-**Tabela.** Jest stronicowana (liczbę wierszy ustawisz w „Opcjach ekranu”) i ma:
-- wybór **języka** (wszystkie języki Bogo, także domyślny, gdy motyw jest napisany po angielsku, a strona jest po polsku) i **domeny tekstowej** (domyślnie domena motywu; widać też inne domeny użyte w plikach motywu),
-- wyszukiwarkę oraz zakładki **Wszystkie / Nieprzetłumaczone / Przetłumaczone** z licznikami,
-- pola formy liczby mnogiej zgodne z regułami języka (dla polskiego 3 formy, dla niemieckiego 2),
-- jako podpowiedź w pustym polu obecne tłumaczenie z motywu lub paczki językowej. Puste pole zostawia to tłumaczenie.
+**Table.** It is paginated (set the number of rows in "Screen Options") and has:
+- a **language** selector (all Bogo languages, including the default one, for when the theme is written in English and the site is in Polish) and a **text domain** selector (the theme's domain by default; other domains used in the theme files are listed too),
+- a search box and **All / Untranslated / Translated** views with counts,
+- plural form fields matching the language's rules (3 forms for Polish, 2 for German),
+- the current translation from the theme or language pack as a hint in an empty field. An empty field keeps that translation.
 
-**Zabezpieczenie przed błędem PHP.** Tłumaczenie, które wymaga więcej argumentów (`%s`, `%d`, `%2$s`) niż oryginał, jest odrzucane z komunikatem. W PHP 8 taki tekst w `printf()` powoduje fatal error na stronie.
+**Protection against PHP errors.** A translation that needs more arguments (`%s`, `%d`, `%2$s`) than the original is rejected with a message. In PHP 8 such a string in `printf()` causes a fatal error on the site.
 
-**Pliki.** Po zapisaniu powstają standardowe pliki gettext:
+**Files.** Saving creates standard gettext files:
 
 ```text
-wp-content/languages/bogo-extended/{domena}-{locale}.po         do edycji np. w Poedit
-wp-content/languages/bogo-extended/{domena}-{locale}.mo
-wp-content/languages/bogo-extended/{domena}-{locale}.l10n.php   szybki format PHP (WordPress 6.5+)
+wp-content/languages/bogo-extended/{domain}-{locale}.po         editable e.g. in Poedit
+wp-content/languages/bogo-extended/{domain}-{locale}.mo
+wp-content/languages/bogo-extended/{domain}-{locale}.l10n.php   fast PHP format (WordPress 6.5+)
 ```
 
-**Jak WordPress ich używa:**
-- Na froncie nie ma żadnych filtrów `gettext`. WordPress wczytuje te pliki tak samo jak każde inne tłumaczenie, przez `load_textdomain()`, i woli `.l10n.php`, który jest cache'owany przez OPcache.
-- Rozszerzenie dba tylko o **kolejność**: plik z frazami ładuje się **przed** plikiem motywu lub paczki językowej. WordPress bierze tłumaczenie z pierwszego pliku, który je zawiera. Twoje frazy wygrywają, a pozostałe teksty nadal pochodzą z oryginalnych, aktualnych tłumaczeń motywu.
-- Działa to także dla motywów, które nie mają żadnych plików tłumaczeń ani nie wywołują `load_theme_textdomain()`.
-- Osobny folder `bogo-extended` (zamiast `languages/themes`) jest celowy, bo aktualizacje paczek językowych nadpisują pliki w `languages/themes`.
-- Źródłem prawdy jest baza danych. Gdyby pliki zniknęły (np. po wdrożeniu), wystarczy zapisać dowolną stronę tabeli, a pliki powstaną od nowa.
+**How WordPress uses them:**
+- There are no `gettext` filters on the front end. WordPress loads these files like any other translation, through `load_textdomain()`, and prefers the `.l10n.php` file, which is cached by OPcache.
+- The add-on only takes care of the **order**: the strings file is loaded **before** the theme's or language pack's file. WordPress takes a translation from the first file that contains it. Your strings win, and every other text still comes from the theme's original, up-to-date translations.
+- This also works for themes that ship no translation files at all or never call `load_theme_textdomain()`.
+- The separate `bogo-extended` folder (instead of `languages/themes`) is deliberate, because language pack updates overwrite files in `languages/themes`.
+- The database is the source of truth. If the files disappear (e.g. after a deployment), saving any page of the table recreates them.
 
-**Ograniczenia:**
-- Skanowane są pliki PHP motywu. Frazy z JavaScriptu (`wp.i18n`) i z `theme.json` wymagają innego formatu (JSON) i nie są obsługiwane.
-- Frazy budowane dynamicznie, np. `__( $zmienna )`, nie dają się wykryć statycznie.
-- Do tłumaczenia **treści** (wpisów, stron, menu) służą pozostałe moduły. Ten służy tylko do tekstów z kodu.
+**Limitations:**
+- Only the theme's PHP files are scanned. Strings from JavaScript (`wp.i18n`) and `theme.json` need a different format (JSON) and are not supported.
+- Dynamically built strings such as `__( $variable )` cannot be detected statically.
+- **Content** (posts, pages, menus) is translated with the other modules. This one is only for texts in code.
 
-### 18. Tłumaczone strony opcji ACF (ACF PRO, domyślnie wyłączone)
+### 18. Translated ACF options pages (ACF PRO, off by default)
 
-Strony opcji ACF PRO (`acf_add_options_page()` i strony dodane w panelu ACF) mają jeden zestaw wartości dla całej witryny. Po włączeniu modułu **Języki → Bogo Extended → Tłumaczenia stron opcji ACF** każdy język może mieć własne wartości, np. inne hasło w nagłówku, inne linki w stopce albo inny tekst CTA.
+ACF PRO options pages (`acf_add_options_page()` and pages added in the ACF admin) have one set of values for the whole site. With **Languages → Bogo Extended → ACF options pages translations** enabled, every language can have its own values, e.g. a different header tagline, different footer links or a different CTA text.
 
-**W panelu** nad formularzem strony opcji pojawiają się zakładki języków. Zakładka języka domyślnego edytuje dotychczasowe wartości. Zakładka innego języka edytuje osobny zestaw wartości:
+**In the admin** language tabs appear above the options page form. The default-language tab edits the existing values. Another language's tab edits a separate set of values:
 
-| Stan zakładki | Wygląd | Znaczenie |
+| Tab state | Look | Meaning |
 |---|---|---|
-| język bez własnych wartości | ramka przerywana | formularz i strona pokazują wartości języka domyślnego |
-| język z własnymi wartościami | ramka ciągła | formularz i strona pokazują wartości tego języka |
+| language without its own values | dashed border | the form and the site show the default-language values |
+| language with its own values | solid border | the form and the site show that language's values |
 
-- **Pierwszy zapis** zakładki języka tworzy pełną kopię wartości tego języka. Formularz jest wtedy wypełniony wartościami języka domyślnego, więc zmieniasz tylko to, co ma być inne. Od tego momentu język jest niezależny, a zmiany w języku domyślnym już na niego nie wpływają.
-- **„Usuń wartości tego języka”** kasuje kopię. Język wraca do wartości języka domyślnego.
-- **Pola wspólne.** Pole, które ma być takie samo we wszystkich językach (telefon, e-mail, klucz API, logo), oznacz w ustawieniach pola w grupie pól jako **„Wspólne dla wszystkich języków”**. W zakładkach innych języków zamiast pola wyświetla się informacja, że edytuje się je w języku domyślnym, a na stronie zawsze jest wartość domyślna. Ustawienie dotyczy pól najwyższego poziomu. Pola wewnątrz grupy lub repeatera dziedziczą je od rodzica.
-- **Pola dodane później** do grupy pól, w języku, który ma już własne wartości, używają wartości języka domyślnego, dopóki nie zapiszesz tej zakładki.
-- Repeater, treść elastyczna i grupa są traktowane jako całość. Język ma albo własne wiersze, albo wiersze języka domyślnego, nigdy mieszankę.
+- **The first save** of a language tab creates a full copy of the values for that language. The form is pre-filled with the default-language values, so you only change what should differ. From then on the language is independent and changes in the default language no longer affect it.
+- **"Delete this language's values"** removes the copy. The language goes back to the default-language values.
+- **Shared fields.** Mark a field that should be the same in every language (phone, email, API key, logo) as **"Shared by all languages"** in its field settings in the field group. In other languages' tabs a note replaces the field saying it is edited in the default language, and the site always shows the default value. The setting applies to top-level fields; fields inside a group or repeater follow their parent.
+- **Fields added later** to the field group use the default-language value in a language that already has its own values, until you save that tab.
+- A repeater, flexible content or group is treated as a whole. A language has either its own rows or the default-language rows, never a mix.
 
-**Na stronie** nic nie trzeba zmieniać w motywie. `get_field( 'tagline', 'option' )`, `have_rows( 'links', 'option' )` itp. zwracają wartości języka strony. Działa to też dla stron opcji z własnym `post_id`, np. `get_field( 'maps_key', 'api_keys' )`.
+**On the site** nothing has to change in the theme. `get_field( 'tagline', 'option' )`, `have_rows( 'links', 'option' )` etc. return the values of the page's language. This also works for options pages with their own `post_id`, e.g. `get_field( 'maps_key', 'api_keys' )`.
 
-**Które strony.** W ustawieniach modułu jest lista identyfikatorów stron opcji (`options` i własne `post_id`). Odznaczona strona ma jeden zestaw wartości dla wszystkich języków i nie ma zakładek. Podstrony z tym samym `post_id` (zwykle `options`) dzielą ustawienie.
+**Which pages.** The module settings list the options page IDs (`options` and custom `post_id`s). An unticked page has one set of values for all languages and no tabs. Subpages with the same `post_id` (usually `options`) share the setting.
 
-Moduł współpracuje z pozostałymi funkcjami ACF: wpisy wybrane w polach Relationship i Post Object na stronie opcji są zamieniane na tłumaczenia. W trybie „własne powiązania w każdym języku” zakładka języka pokazuje do wyboru wpisy w tym języku.
+The module works with the other ACF features: posts selected in Relationship and Post Object fields on an options page are swapped for their translations. In the "own relations per language" mode a language tab lists posts in that language.
 
-Wartości są zapisywane przez samo ACF, jako opcje z kodem języka: `options_de_DE_tagline` zamiast `options_tagline`. Strony opcji przechowujące wartości we wpisie (liczbowy `post_id`) nie są obsługiwane.
+Values are stored by ACF itself, as options with the language code: `options_de_DE_tagline` instead of `options_tagline`. Options pages that store their values on a post (numeric `post_id`) are not supported.
 
 ---
 
-## Uprawnienia
+## Permissions
 
-| Akcja | Wymagane uprawnienie |
+| Action | Required capability |
 |---|---|
-| Tworzenie tłumaczenia wpisu | endpoint Bogo: `create_posts` dla typu, `edit_post` (lub opublikowany oryginał) oraz dostęp do języka (`bogo_access_locale`) |
-| Panel w edytorze (odczyt) | `edit_post` dla edytowanego wpisu |
-| Tłumaczenia terminów | `edit_term` + nonce |
-| Tłumaczenia menu | `edit_theme_options` + nonce ekranu menu |
-| Tłumaczenia CF7 | `wpcf7_edit_contact_form` + nonce |
-| Ustawienia | `manage_options` + nonce |
-| Tłumaczenie fraz | `manage_options` (filtr `bogoext_strings_capability`) + nonce |
-| Wartości stron opcji ACF | uprawnienie strony opcji (`capability`) oraz dostęp do języka w Bogo. Usuwanie wartości języka wymaga też nonce |
+| Creating a post translation | Bogo endpoint: `create_posts` for the type, `edit_post` (or a published original) and access to the language (`bogo_access_locale`) |
+| Editor sidebar (read) | `edit_post` for the edited post |
+| Term translations | `edit_term` + nonce |
+| Menu translations | `edit_theme_options` + the menus screen nonce |
+| CF7 translations | `wpcf7_edit_contact_form` + nonce |
+| Settings | `manage_options` + nonce |
+| Strings translation | `manage_options` (filter `bogoext_strings_capability`) + nonce |
+| ACF options page values | the options page's capability (`capability`) and access to the language in Bogo. Deleting a language's values also requires a nonce |
 
-Wszystkie dane z formularzy są sanityzowane, a wszystkie dane wyjściowe escapowane.
+All form input is sanitized and all output is escaped.
 
 ---
 
-## Dane w bazie
+## Stored data
 
-| Klucz | Gdzie | Zawartość |
+| Key | Where | Content |
 |---|---|---|
-| `_locale`, `_original_post` | postmeta | dane Bogo (rozszerzenie ich nie zmienia) |
+| `_locale`, `_original_post` | postmeta | Bogo's data (the add-on does not change it) |
 | `_bogoext_i18n` | termmeta | `[ locale => [ name, description ] ]` |
-| `_bogoext_slug_{locale}` | termmeta | przetłumaczony slug terminu (np. `_bogoext_slug_de_DE`) |
-| `_bogoext_i18n` | postmeta pozycji menu | `[ locale => [ title, description, url ] ]` |
-| `_bogoext_cf7_source` | postmeta formularza CF7 | ID formularza źródłowego grupy |
-| `_locale` | postmeta formularza CF7 | język formularza (natywne pole CF7) |
-| `bogoext_settings` | options | ustawienia modułów, lista tłumaczonych typów treści (`post_types`), taksonomie z polami tłumaczeń |
-| `bogoext_slugs` | options | przetłumaczone bazy adresów: `[ pt / tax => [ nazwa => [ locale => [ base, archive ] ] ] ]` |
-| `bogoext_st_index` | options (bez autoload) | wynik skanowania motywu: frazy, domeny, miejsca użycia |
-| `bogoext_st_tr_{locale}` | options (bez autoload) | tłumaczenia fraz danego języka |
-| `bogoext_st_compiled` | options | lista wygenerowanych plików (domena → języki) |
-| `wp-content/languages/bogo-extended/` | pliki | wygenerowane `.po`, `.mo`, `.l10n.php` |
-| `{post_id}_{locale}_{pole}` | options | wartości stron opcji ACF w danym języku, zapisywane przez ACF (np. `options_de_DE_tagline`) |
-| `bogoext_shared` | ustawienia pola ACF | pole wspólne dla wszystkich języków |
+| `_bogoext_slug_{locale}` | termmeta | translated term slug (e.g. `_bogoext_slug_de_DE`) |
+| `_bogoext_i18n` | menu item postmeta | `[ locale => [ title, description, url ] ]` |
+| `_bogoext_cf7_source` | CF7 form postmeta | ID of the group's source form |
+| `_locale` | CF7 form postmeta | form language (CF7's native field) |
+| `bogoext_settings` | options | module settings, translatable content types (`post_types`), taxonomies with translation fields |
+| `bogoext_slugs` | options | translated URL bases: `[ pt / tax => [ name => [ locale => [ base, archive ] ] ] ]` |
+| `bogoext_st_index` | options (no autoload) | theme scan result: strings, domains, references |
+| `bogoext_st_tr_{locale}` | options (no autoload) | string translations of a language |
+| `bogoext_st_compiled` | options | list of generated files (domain → languages) |
+| `wp-content/languages/bogo-extended/` | files | generated `.po`, `.mo`, `.l10n.php` |
+| `{post_id}_{locale}_{field}` | options | ACF options page values of a language, stored by ACF (e.g. `options_de_DE_tagline`) |
+| `bogoext_shared` | ACF field settings | field shared by all languages |
 
-Klucze z podkreślnikiem są ukryte w polach własnych. Odinstalowanie usuwa tylko ustawienia, a tłumaczenia (treść, frazy i ich pliki) zostają.
+Keys starting with an underscore are hidden from the custom fields box. Uninstalling removes only the settings; translations (content, strings and their files) are kept.
 
 ---
 
-## Dla programistów
+## For developers
 
-### Funkcje
+### Functions
 
 ```php
-// ID tłumaczenia wpisu (0 gdy brak); domyślnie tylko opublikowane
+// ID of a post's translation (0 when missing); published only by default
 bogoext_get_translation_id( $post_id, 'de_DE', $published_only = true );
 
-// Cała grupa: [ locale => [ id, status, type ] ] (z cache żądania)
+// The whole group: [ locale => [ id, status, type ] ] (request cache)
 BogoExt_Translations::get_group( $post_id );
-BogoExt_Translations::prime( $post_ids ); // wczytanie wielu grup naraz
+BogoExt_Translations::prime( $post_ids ); // load many groups at once
 
-// Adres w bieżącym (lub podanym) języku
+// URL in the current (or given) language
 bogoext_localize_url( 'https://example.com/kontakt/', 'de_DE' );
 
-// Tłumaczenie terminu (pusty string gdy brak)
+// Term translation (empty string when missing)
 bogoext_term_field( $term_id, 'de_DE', 'name' );
 
-// Przetłumaczony slug terminu ('' gdy brak) i termin po przetłumaczonym slugu
+// Translated term slug ('' when missing) and term by translated slug
 bogoext_term_slug( $term_id, 'de_DE' );                              // 'neuigkeiten'
 bogoext_term_by_translated_slug( 'category', 'de_DE', 'neuigkeiten' ); // WP_Term|null
 
-// Formularze CF7: [ locale => form_id ]
+// CF7 forms: [ locale => form_id ]
 bogoext_cf7_group( $form_id );
 
-// Przetłumaczona baza adresu ('' gdy brak) i poprawienie bazy w dowolnym URL-u
+// Translated URL base ('' when missing) and fixing the base in any URL
 bogoext_slugs_get( 'pt', 'realizacje', 'de_DE' );          // 'projekte'
 bogoext_slugs_normalize_url( 'https://example.com/de/realizacje/x/' ); // …/de/projekte/x/
 ```
 
-Funkcje Bogo, które warto znać: `bogo_get_post_translations()`, `bogo_get_post_translation()`, `bogo_get_post_locale()`, `bogo_language_switcher_links()`, `bogo_url()`.
+Bogo functions worth knowing: `bogo_get_post_translations()`, `bogo_get_post_translation()`, `bogo_get_post_locale()`, `bogo_language_switcher_links()`, `bogo_url()`.
 
-### Filtry
+### Filters
 
-| Filtr | Opis |
+| Filter | Description |
 |---|---|
-| `bogoext_module_enabled( $enabled, $key )` | wymuszenie włączenia lub wyłączenia modułu z kodu |
-| `bogoext_settings( $settings )` | modyfikacja ustawień |
-| `bogoext_localizable_taxonomies( $list )` | taksonomie z polami tłumaczeń |
-| `bogoext_sync_taxonomies( $list, $post )` | taksonomie synchronizowane do tłumaczeń |
-| `bogoext_duplicate_excluded_meta( $keys, $post, $locale )` | meta niekopiowane przy tworzeniu tłumaczenia |
-| `bogoext_hide_translations_in_link_picker( true )` | `false` = okno linku pokazuje też tłumaczenia |
-| `bogoext_acf_hide_translations( true, $field )` | `false` = selektory ACF pokazują też tłumaczenia |
-| `bogoext_acf_own_relations( $enabled, $field, $post_id )` | tryb „własne powiązania w każdym języku” dla wybranego pola |
-| `bogoext_acf_translatable_options( $ids )` | identyfikatory stron opcji z osobnymi wartościami dla języków |
-| `bogoext_acf_remap_on_duplicate( true, $field, $post, $locale )` | `false` = „Dodaj tłumaczenie” kopiuje powiązania bez zamiany na tłumaczenia |
-| `bogoext_hreflang( $languages )` | końcowa lista hreflang |
-| `bogoext_switcher_links( $links )` | dane przełącznika `[bogo-dropdown]` |
-| `bogoext_dropdown_html( $html, $links, $atts )` | HTML przełącznika |
-| `bogoext_cf7_locale( $locale )` | język używany do wyboru formularza CF7 |
-| `bogoext_strings_capability( 'manage_options' )` | uprawnienie do ekranu „Tłumaczenie fraz” |
+| `bogoext_module_enabled( $enabled, $key )` | force a module on or off in code |
+| `bogoext_settings( $settings )` | modify the settings |
+| `bogoext_localizable_taxonomies( $list )` | taxonomies with translation fields |
+| `bogoext_sync_taxonomies( $list, $post )` | taxonomies synced to translations |
+| `bogoext_duplicate_excluded_meta( $keys, $post, $locale )` | meta not copied when creating a translation |
+| `bogoext_hide_translations_in_link_picker( true )` | `false` = the link dialog shows translations too |
+| `bogoext_acf_hide_translations( true, $field )` | `false` = ACF pickers show translations too |
+| `bogoext_acf_own_relations( $enabled, $field, $post_id )` | "own relations per language" mode for a given field |
+| `bogoext_acf_translatable_options( $ids )` | options page IDs with separate values per language |
+| `bogoext_acf_remap_on_duplicate( true, $field, $post, $locale )` | `false` = "Add translation" copies relations without replacing them with translations |
+| `bogoext_hreflang( $languages )` | final hreflang list |
+| `bogoext_switcher_links( $links )` | `[bogo-dropdown]` switcher data |
+| `bogoext_dropdown_html( $html, $links, $atts )` | switcher HTML |
+| `bogoext_cf7_locale( $locale )` | language used to pick the CF7 form |
+| `bogoext_strings_capability( 'manage_options' )` | capability for the "Strings Translation" screen |
 
-Akcja `bogoext_loaded` jest wywoływana po załadowaniu modułów.
+The `bogoext_loaded` action fires after the modules are loaded.
 
-Typy treści można też włączyć kodem, filtrem Bogo. Tak włączone typy są widoczne w ustawieniach jako zablokowane:
+Content types can also be made translatable in code, with Bogo's filter. Types enabled this way are shown as locked in the settings:
 
 ```php
 add_filter( 'bogo_localizable_post_types', function ( $types ) {
@@ -472,68 +474,71 @@ add_filter( 'bogo_localizable_post_types', function ( $types ) {
 
 ---
 
-## Ograniczenia i uwagi
+## Limitations and notes
 
-- Bogo trzyma tłumaczenia jako osobne wpisy (`_locale`, `_original_post`), a nie w osobnych tabelach. Rozszerzenie zachowuje ten model, więc po wyłączeniu wszystko nadal działa w czystym Bogo (bez dodatkowych funkcji).
-- Automatyczna lokalizacja linków obejmuje wpisy, strony i stronę główną. Linki do archiwów kategorii w treści nie są przepisywane (w menu są).
-- Termin jest w Bogo jeden dla wszystkich języków, więc przetłumaczony slug jest aliasem w termmeta, a nie osobnym terminem. Natywne pole „Slug” WordPressa zawsze pokazuje slug oryginalny.
-- Linki do kategorii wpisane ręcznie w treść (`/de/category/aktualnosci/`) nie są przepisywane, ale przekierowują 301 na właściwy adres.
-- Wspólny przedrostek struktury bezpośrednich odnośników (np. `/blog/%postname%/`) nie jest tłumaczony.
-- Po zmianie bazy na działającej stronie wyczyść cache strony (LiteSpeed, WP Rocket itp.). Stare adresy przekierowują same.
-- Formularz CF7 ma jeden język. Tłumaczenie to osobny formularz, więc zmiany pól trzeba nanieść w każdej wersji.
-- Moduły ACF, CF7 i TSF są bezczynne, gdy dana wtyczka nie jest aktywna.
-- W trybie „własne powiązania” relacje dwukierunkowe ACF (*bidirectional*) nie są uzupełniane po drugiej stronie przy „Dodaj tłumaczenie”, bo zamiana odbywa się przed zapisem wpisu. Przy ręcznej zmianie pola i zapisie ACF aktualizuje drugą stronę normalnie.
+- Bogo stores translations as separate posts (`_locale`, `_original_post`), not in separate tables. The add-on keeps that model, so after deactivating it everything still works in plain Bogo (without the extra features).
+- Automatic link localization covers posts, pages and the home page. Links to category archives in the content are not rewritten (in menus they are).
+- In Bogo a term is shared by all languages, so a translated slug is an alias in termmeta, not a separate term. WordPress's native "Slug" field always shows the original slug.
+- Category links typed manually into the content (`/de/category/aktualnosci/`) are not rewritten, but they redirect with a 301 to the right URL.
+- A common permalink structure prefix (e.g. `/blog/%postname%/`) is not translated.
+- After changing a base on a live site, clear the page cache (LiteSpeed, WP Rocket etc.). Old URLs redirect by themselves.
+- A CF7 form has a single language. A translation is a separate form, so field changes have to be made in every version.
+- The ACF, CF7 and TSF modules stay idle when the respective plugin is not active.
+- In the "own relations" mode, ACF bidirectional relationships are not filled in on the other side on "Add translation", because the replacement happens before the post is saved. When you change the field manually and save, ACF updates the other side normally.
 
 ---
 
-## Struktura plików
+## File structure
 
 ```text
 bogo-extended/
-├── bogo-extended.php            bootstrap, sprawdzenie obecności Bogo
+├── bogo-extended.php            bootstrap, checks that Bogo is present
 ├── uninstall.php
+├── README.md                    documentation (English)
+├── README-pl.md                 documentation (Polish)
 ├── includes/
-│   ├── settings.php             ustawienia (ładowane najwcześniej)
-│   ├── functions.php            funkcje pomocnicze
-│   ├── class-translations.php   grupy tłumaczeń (batch SQL + cache żądania)
-│   ├── class-url-resolver.php   URL → wpis → URL tłumaczenia
-│   ├── slugs-data.php           dane i walidacja tłumaczonych baz adresów
-│   ├── admin/                   ekran ustawień
-│   ├── strings/                 tłumaczenie fraz: skaner, magazyn i kompilacja plików, ekran
-│   └── modules/                 jeden plik = jeden moduł
-├── assets/                      css, js (bez kroku budowania)
+│   ├── settings.php             settings (loaded first)
+│   ├── functions.php            helper functions
+│   ├── class-translations.php   translation groups (batch SQL + request cache)
+│   ├── class-url-resolver.php   URL → post → translation URL
+│   ├── slugs-data.php           data and validation of translated URL bases
+│   ├── admin/                   settings screen
+│   ├── strings/                 strings translation: scanner, storage and file compiler, screen
+│   └── modules/                 one file = one module
+├── assets/                      css, js (no build step)
 └── languages/                   .pot + pl_PL
 ```
 
-Nie ma kroku budowania (webpack, npm). JS to czysty ES2017 korzystający z globalnych pakietów `wp.*` WordPressa.
+There is no build step (webpack, npm). The JS is plain ES2017 using WordPress's global `wp.*` packages.
 
 ---
 
-## Historia zmian
+## Changelog
 
 **1.6.0**
-- Nowy moduł (domyślnie wyłączony): tłumaczone strony opcji ACF PRO. Zakładki języków na stronie opcji, wartości języka domyślnego dla języków bez własnych wartości, pola „Wspólne dla wszystkich języków”, usuwanie wartości języka i wybór tłumaczonych stron w ustawieniach.
+- New module (off by default): translated ACF PRO options pages. Language tabs on the options page, default-language values for languages without their own values, "Shared by all languages" fields, deleting a language's values and choosing the translated pages in the settings.
+- English README as the main documentation; the Polish one moved to `README-pl.md`.
 
 **1.5.0**
-- ACF: opcjonalny tryb „własne powiązania w każdym języku” (domyślnie wyłączony). Pola Relationship, Post Object i Page Link na przetłumaczonym wpisie pokazują wpisy w jego języku. „Dodaj tłumaczenie” zamienia skopiowane powiązania na opublikowane tłumaczenia, a wpisy z innego języka są oznaczone kodem języka.
+- ACF: optional "own relations per language" mode (off by default). Relationship, Post Object and Page Link fields on a translated post list posts in its language. "Add translation" replaces the copied relations with published translations, and posts in another language are marked with the language code.
 
 **1.4.1**
-- `[bogo-dropdown style="list"]` – prosta lista linków bez stylów i skryptów wtyczki.
+- `[bogo-dropdown style="list"]` – a plain list of links without the plugin's styles and scripts.
 
 **1.4.0**
-- Tłumaczone slugi kategorii, tagów i terminów innych taksonomii: pole „Slug” dla każdego języka, linki, przełącznik i hreflang ze slugiem języka, 301 ze sluga oryginalnego, obsługa kategorii zagnieżdżonych, walidacja kolizji.
+- Translated slugs of categories, tags and terms of other taxonomies: a "Slug" field per language, links, switcher and hreflang with the language's slug, 301 from the original slug, nested categories, collision validation.
 
 **1.3.0**
-- Nowy moduł „Tłumaczenie fraz”: skan motywu głównego i potomnego, stronicowana tabela tłumaczeń, zapis do natywnych plików `.po` / `.mo` / `.l10n.php` ładowanych przed tłumaczeniami motywu, walidacja symboli zastępczych.
+- New "Strings translation" module: scanning the parent and child theme, a paginated translation table, saving to native `.po` / `.mo` / `.l10n.php` files loaded before the theme's translations, placeholder validation.
 
 **1.2.0**
-- Wybór tłumaczonych typów treści (CPT) w ustawieniach, bez pisania kodu.
-- Zakładki języków z licznikami na listach wpisów, obok „Tylko oryginały” i „Wszystkie języki”.
-- Nowy moduł: ukrycie menu języka Bogo w pasku administracyjnym (domyślnie włączony).
+- Choosing translatable content types (CPTs) in the settings, without code.
+- Language views with counts in post lists, next to "Originals only" and "All languages".
+- New module: hide Bogo's language menu in the admin toolbar (on by default).
 
 **1.1.0**
-- Nowy moduł: tłumaczone bazy adresów typów treści i taksonomii, z przekierowaniami 301, walidacją kolizji i poprawnym przełącznikiem oraz hreflang na archiwach.
-- Ekran ustawień ładuje własny arkusz stylów.
+- New module: translated URL bases of content types and taxonomies, with 301 redirects, collision validation and correct switcher and hreflang on archives.
+- The settings screen loads its own stylesheet.
 
 **1.0.0**
-- Pierwsze wydanie.
+- First release.
